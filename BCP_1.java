@@ -306,6 +306,7 @@ public class BCP_1 {
         System.out.println("Lugar de mayor uso:"+lugar);
         System.out.println(" Numero de Tarjeta :"+Num_Tarjeta[Number]);
         System.out.println("En su cuenta se le agregara el monto de:s/"+precio+"por adquirir la tarjeta");
+        System.out.println("Puedes recoger tu tarjeta en cualquiera de nuestras agencias de Lunes a Viernes de 9:00 a.m. a 06:00 p.m. y Sábados de 09:00 a.m. a 01:00 p.m.");
         this.fExportarBoleta();
 
     }
