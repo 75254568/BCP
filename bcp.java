@@ -8,8 +8,9 @@ public class bcp {
         System.out.printf("En que te puedo ayudar hoy\n");
         System.out.printf("1: Solicitar un prestamo\n");
         System.out.printf("2: Adelantar sueldo\n");
-        System.out.printf("3: Trajeta\n");
+        System.out.printf("3: Tarjeta\n");
         System.out.printf("4: Chat bot\n");
+        System.out.println("5: Salir de BCP");
         opcion = BcP.nextLine();
         switch (opcion) {
             case "1":
@@ -23,6 +24,9 @@ public class bcp {
                 break;
             case "4":
                 this.fChatbot();
+                break;
+            case "5":
+                System.out.println("Gracias por usar nuestros servicios, vuelva pronto\n");
                 break;
             default:
                 System.out.printf("Esa opcion no esta disponible escriba otra opcion\n");
@@ -425,11 +429,5 @@ public class bcp {
     public static void main(String[]args){
         bcp mani = new bcp();
         mani.fMenu();
-        mani.fCuenta();
-        mani.fSaldo();
-        mani.fTarjetas();
-        mani.fPrestamo();
-        mani.fAdelanto();
-        mani.fChatbot();
     }
 }
