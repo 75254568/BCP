@@ -385,11 +385,11 @@ public class Video {
 
     //ABRAHAM
     public String fChatBot() {
-        this.Menuprincipal();
+        this.Menuchatbot();
         return null;
     }
 
-    public String Menuprincipal() {
+    public String Menuchatbot() {
         System.out.printf("Bienvenido a chat bot de BCP\n");
         System.out.printf("Esoja una de las opciones\n");
         System.out.printf("1: Cuentas\n");
@@ -418,7 +418,7 @@ public class Video {
 
             default:
                 System.out.println("Opcion no válida");
-                this.Menuprincipal();
+                this.Menuchatbot();
                 break;
 
         }
@@ -492,7 +492,7 @@ public class Video {
                         break;
 
                     case 6:
-                        this.Menuprincipal();
+                        this.Menuchatbot();
                         break;
 
                     default:
@@ -501,7 +501,7 @@ public class Video {
                 break;
 
             case 3:
-                this.Menuprincipal();
+                this.Menuchatbot();
                 break;
 
             default:
@@ -609,7 +609,7 @@ public class Video {
                 this.freclamaciones();
                 break;
             } else if (opcion == 4) {
-                this.Menuprincipal();
+                this.Menuchatbot();
                 break;
             } else {
                 System.out.println("Opción no válida. Inténtalo de nuevo.");
