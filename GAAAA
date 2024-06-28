@@ -19,6 +19,7 @@ public class Vdeo {
     String[] Tarjetas_Credito = {"Visa Clasica BCP", "Visa Clasica Latam Pass"};
     String[] despedida = {"Ganamos todos o perdemos todos", "Queremos ayudarte a encontrar lo que necesites."};
     String[] Anuncios = {"Comprar entradas para la Copa America", "Gana premios pagando desde la app", "Boletos para el concierto de Libido "};
+    double[] saldos = {500.0, 1000.0, 750.0, 1200.0};
     String[] Num_Tarjeta = {"3242-1235-2131-3434", "6456-8793-3467-6754", "4366-3567-1230-7543", "1243-4876-3521-1321"};
     Random random = new Random();
     int America = random.nextInt(Anuncios.length);
@@ -31,8 +32,10 @@ public class Vdeo {
     String names, contra;
     String[] lineas = new String[1000];
     int contadorlineas = 0;
+    int currentUserIndex;
 
-    //menu
+
+    //menu William
     public String Inicio_Sesion() {
         System.out.println("-----Bienvenido  al BCP-------");
         for (int i = 0; i < Usuarios.length; i++) {
@@ -139,18 +142,18 @@ public class Vdeo {
         String opcion;
         System.out.printf("Bienvenido a BCP \n");
         System.out.printf("En que te puedo ayudar hoy\n");
-        System.out.printf("1: Solicitar un prestamo\n");
-        System.out.printf("2: Adelantar sueldo\n");
+        System.out.printf("1: Solicitar un Tranferir Dinero\n");
+        System.out.printf("2: Cambiar Usuario\n");
         System.out.printf("3: Trajeta\n");
         System.out.printf("4: Chat bot\n");
         System.out.println("5:Obten tu SOAT Digital\n");
         opcion = BcP.nextLine();
         switch (opcion) {
             case "1":
-                this.fPrestamo();
+                this.fTransferirDinero();
                 break;
             case "2":
-                this.fAdelanto();
+                this.Inicio_Sesion();
                 break;
             case "3":
                 this.fTarjetas();
@@ -173,18 +176,29 @@ public class Vdeo {
     }
 
     //KEVIN
-    public String fPrestamo() {
-
-
-        return null;
-
+    public void fTransferirDinero() {
+        double saldo = saldos[currentUserIndex];
+        saldos[currentUserIndex] = saldo;
+        System.out.println("------ Transferir Dinero ------");
+        System.out.println("Ingrese el nombre del usuario al que desea transferir:");
+        String destinatario = resident.nextLine();
+        if (Arrays.asList(Usuarios).contains(destinatario)) {
+            int destIndex = Arrays.asList(Usuarios).indexOf(destinatario);
+            System.out.println("Ingrese la cantidad a transferir:");
+            double cantidad = resident.nextDouble();
+            resident.nextLine();
+            if (cantidad > 0 && cantidad <= saldos[currentUserIndex]) {
+                saldos[currentUserIndex] -= cantidad;
+                saldos[destIndex] += cantidad;
+                System.out.println("Se han transferido $" + cantidad + " a " + destinatario);
+            } else {
+                System.out.println("Fondos insuficientes o cantidad inválida.");
+            }
+        } else {
+            System.out.println("Usuario no encontrado.");
+        }
+        this.MenuGeneral();
     }
-    //WILLIAN
-
-    public String fAdelanto() {
-        return null;
-    }
-
     //Mathias
     public String fTarjetas() {
         System.out.println("---------Elige la tarjeta que va contigo----------");
