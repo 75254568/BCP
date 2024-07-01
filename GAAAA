@@ -15,8 +15,8 @@ public class Vdeo {
     Scanner resident = new Scanner(System.in);
     String[] Usuarios = {"kevin", "mathias", "abraham", "william"};
     String[] Contraseñas = {"1234", "4321", "2341", "9876"};
-    String[] Tarjetas_Debito = {"Visa Clasica", "Visa Light", "Visa Latam Pass"};
-    String[] Tarjetas_Credito = {"Visa Clasica BCP", "Visa Clasica Latam Pass"};
+    String[] Tarjetas_Debito = {"Visa Clasica", "Visa Light", "Visa Latam Pass","Menu"};
+    String[] Tarjetas_Credito = {"Visa Clasica BCP", "Visa Clasica Latam Pass","Menu"};
     String[] despedida = {"Ganamos todos o perdemos todos", "Queremos ayudarte a encontrar lo que necesites."};
     String[] Anuncios = {"Comprar entradas para la Copa America", "Gana premios pagando desde la app", "Boletos para el concierto de Libido "};
     double[] saldos = {500.0, 1000.0, 750.0, 1200.0};
@@ -27,7 +27,7 @@ public class Vdeo {
     double precio = 20;
     String[] carrito = new String[Tarjetas_Debito.length];
     String[] carrito_extra = new String[Tarjetas_Credito.length];
-    String nombre, dni, lugar;
+    String nombre,Password, dni, lugar;
     int opcion;
     String names, contra;
     String[] lineas = new String[1000];
@@ -36,105 +36,91 @@ public class Vdeo {
 
 
     //menu William
-    public String Inicio_Sesion() {
-        System.out.println("-----Bienvenido  al BCP-------");
-        for (int i = 0; i < Usuarios.length; i++) {
-            System.out.println("Usuario " + (i + 1) + " : " + Usuarios[i]);
-        }
-        System.out.println("Elija una de los usuarios:");
-        names = resident.nextLine();
-        switch (names) {
-            case "kevin":
-                this.Contraseña1();
-                return null;
-            case "mathias":
-                this.Contraseña2();
-                return null;
-            case "abraham":
-                this.Contraseña3();
-                return null;
-            case "willian":
-                this.Contraseña4();
-                return null;
-            default:
-                System.out.println("Incorrecto");
-                this.Inicio_Sesion();
-        }
+    public String Inicio_Sesion() {boolean usur = false;
+        {
+            do
 
+            {
+                System.out.println("Bienvenido a: \n");
+                System.out.println("BBBBBBB     CCCCCC     PPPPPPP");
+                System.out.println("BB    BB   CC    CC   PP     PP");
+                System.out.println("BB    BB   CC         PP     PP");
+                System.out.println("BBBBBBB    CC         PPPPPPP");
+                System.out.println("BB    BB   CC         PP");
+                System.out.println("BB    BB   CC    CC   PP");
+                System.out.println("BBBBBBB     CCCCCC    PP\n");
+                System.out.println("Por favor ingrese su nombre de usuario");
+                names = resident.nextLine();
+                switch (names) {
+                    case "kevin":
+                        System.out.println("Escriba su contraseña de 4 digitos");
+                        contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+                            if (Arrays.asList(Contraseñas[0]).contains(contra)) {
+                                System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + Usuarios[0]);
+                                usur = true;
+                                this.MenuGeneral();
+                            }
+                        } else {
+                            System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                        break;
+                    case "roshell":
+                        System.out.println("Escriba su contraseña de 4 digitos");
+                        contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+                            if (Arrays.asList(Contraseñas[1]).contains(contra)) {
+                                System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + Usuarios[1]);
+                                usur = true;
+                                this.MenuGeneral();
 
-        return null;
+                            }
+                        } else {
+                            System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                        break;
+                    case "mathias":
+                        System.out.println("Escriba su contraseña de 4 digitos");
+                        contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+                            if (Arrays.asList(Contraseñas[2]).contains(contra)) {
+                                System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + Usuarios[2]);
+                                usur = true;
+                                this.MenuGeneral();
+
+                            }
+                        } else {
+                            System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                        break;
+                    case "will":
+                        System.out.println("Escriba su contraseña de 4 digitos");
+                        contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+                            if (Arrays.asList(Contraseñas[3]).contains(contra)) {
+                                System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + Usuarios[3]);
+                                usur = true;
+                                this.MenuGeneral();
+                            }
+                        } else {
+                            System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                        break;
+                    default:
+                        System.out.println("incorrecto");
+                        System.out.println("vuelva a intentarlo");
+                }
+            } while(!usur);
     }
-
-    public void Contraseña1() {
-        System.out.println("------Escriba su contraseña:------");
-        contra = resident.nextLine();
-        if (contra.matches("\\d{4}")) {
-            if (contra.equals(Contraseñas[0]))
-                System.out.println("BIenvenido" + "\n" + Usuarios[0]);
-            this.MenuGeneral();
-
-
-        } else {
-            System.out.println("Contraeña incorrecta:");
-            this.Inicio_Sesion();
-        }
-
-
-    }
-
-    public void Contraseña2() {
-        System.out.println("------Escriba su contraseña:------");
-        contra = resident.nextLine();
-        if (contra.matches("\\d{4}")) {
-            if (contra.equals(Contraseñas[1]))
-                System.out.println("BIenvenido" + "\n" + Usuarios[1]);
-            this.MenuGeneral();
-
-
-
-        } else {
-            System.out.println("Contraeña incorrecta:");
-
-            this.Inicio_Sesion();
-        }
-
-
-    }
-
-    public void Contraseña3() {
-        System.out.println("------Escriba su contraseña:------");
-        contra = resident.nextLine();
-        if (contra.matches("\\d{4}")) {
-            if (contra.equals(Contraseñas[2]))
-                System.out.println("BIenvenido" + "\n" + Usuarios[2]);
-            this.MenuGeneral();
-
-
-
-        } else {
-            System.out.println("Contraeña incorrecta:");
-            this.Inicio_Sesion();
-        }
-
-
-    }
-
-    public void Contraseña4() {
-        System.out.println("------Escriba su contraseña:------");
-        contra = resident.nextLine();
-        if (contra.matches("\\d{4}")) {
-            if (contra.equals(Contraseñas[3]))
-                System.out.println("BIenvenido" + "\n" + Usuarios[3]);
-            this.MenuGeneral();
-
-
-
-        } else {
-            System.out.println("Contraseña incorrecta:");
-            this.Inicio_Sesion();
-        }
-
-
+    return null;
     }
 
     public String MenuGeneral() {
@@ -144,7 +130,7 @@ public class Vdeo {
         System.out.printf("En que te puedo ayudar hoy\n");
         System.out.printf("1: Solicitar un Tranferir Dinero\n");
         System.out.printf("2: Cambiar Usuario\n");
-        System.out.printf("3: Trajeta\n");
+        System.out.printf("3: Tarjeta\n");
         System.out.printf("4: Chat bot\n");
         System.out.println("5:Obten tu SOAT Digital\n");
         opcion = BcP.nextLine();
@@ -219,6 +205,8 @@ public class Vdeo {
             case 3:
                 this.MenuGeneral();
                 break;
+            default:
+                this.fTarjetas();
 
 
         }
@@ -236,71 +224,149 @@ public class Vdeo {
         resident.nextLine();
         switch (opcion) {
             case 1:
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[0]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fDebito();
+                        }
 
-                System.out.println("Ud quiere la Tarjeta de Debito " + Tarjetas_Debito[0]);
-                System.out.println("¿Desea continuar con el proceso de adquirir la tarjeta?  1 SI/ 2 NO / 3 Menu Principal");
-                opcion = resident.nextInt();
-                resident.nextLine();
-                if (opcion == 1) {
-                    System.out.println("Listo, tu cuenta BCP fue creada");
-                    System.out.println("Datos de su cuenta:");
-                    this.fPago();
-                    fPago();
-                } else if (opcion == 2) {
-                    this.fDebito();
-                } else if (opcion == 3) {
-                    this.fTarjetas();
-                } else {
-                    System.out.println("Opcion no válida");
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fDebito();
+                    }
+
                 }
-
+                else{
+                    System.out.println("Incorrecto");
+                    this.fDebito();
+                }
                 break;
 
             case 2:
 
 
-                System.out.println("Usted eligio la tarjeta: " + Tarjetas_Debito[1]);
-                System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
-                opcion = resident.nextInt();
-                resident.nextLine();
-                if (opcion == 1) {
-                    System.out.println("Listo, tu cuenta BCP fue creada");
-                    System.out.println("Datos de su cuenta:");
-                    this.fPago();
-                } else if (opcion == 2) {
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[1]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fDebito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fDebito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
                     this.fDebito();
-                } else if (opcion == 3) {
-                    this.fTarjetas();
-                } else {
-                    System.out.println("Opcion no válida");
                 }
 
                 break;
 
             case 3:
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[2]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fDebito();
+                        }
 
-                System.out.println("Usted eligio la Tarjeta de Debito " + Tarjetas_Debito[2]);
-                System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
-                opcion = resident.nextInt();
-                resident.nextLine();
-                if (opcion == 1) {
-                    System.out.println("Listo, tu cuenta BCP fue creada");
-                    System.out.println("Datos de su cuenta:");
-                    this.fPago();
-                } else if (opcion == 2) {
-                    this.fCredito();
-                } else if (opcion == 3) {
-                    this.fTarjetas();
-                } else {
-                    System.out.println("Opcion no válida");
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fDebito();
+                    }
+
                 }
-
-
+                else{
+                    System.out.println("Incorrecto");
+                    this.fDebito();
+                }
+                break;
+            case 4:
+                this.MenuGeneral();
                 break;
 
             default:
                 System.out.println("Opcion no válida");
-                this.fTarjetas();
+                this.fDebito();
                 break;
 
 
@@ -320,42 +386,98 @@ public class Vdeo {
         resident.nextLine();
         switch (opcion) {
             case 1:
-                System.out.println("Usted eligio la tarjeta: " + Tarjetas_Credito[0]);
-                System.out.println("¿Desea continuar con el proceso de adquirir la tarjeta?  1 SI/ 2 NO / 3 Menu Principal");
-                opcion = resident.nextInt();
-                resident.nextLine();
-                if (opcion == 1) {
-                    System.out.println("Listo, tu cuenta BCP fue creada");
-                    System.out.println("Datos de su cuenta:");
-                    this.fPago();
-                } else if (opcion == 2) {
-                    this.fCredito();
-                } else if (opcion == 3) {
-                    this.fTarjetas();
-                } else {
-                    System.out.println("Opcion no válida");
-                }
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Credito[0]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fCredito();
+                        }
 
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fCredito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
+                    this.fCredito();
+                }
                 break;
 
             case 2:
 
-                System.out.println("Usted ha elegido la tarjeta de Credito" + Tarjetas_Credito[1]);
-                System.out.println("¿Desea adquirir esta tarjeta?  1 SI/ 2 NO / 3 Menu Principal");
-                opcion = resident.nextInt();
-                resident.nextLine();
-                if (opcion == 1) {
-                    System.out.println("Listo, tu cuenta BCP fue creada");
-                    System.out.println("Datos de su cuenta:");
-                    this.fPago();
-                } else if (opcion == 2) {
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[1]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fCredito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fCredito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
                     this.fCredito();
-                } else if (opcion == 3) {
-                    this.fTarjetas();
-                } else {
-                    System.out.println("Opcion no válida");
                 }
 
+                break;
+            case 3:
+                this.fCredito();
                 break;
             default:
                 System.out.println("Opcion no válida");
@@ -369,10 +491,10 @@ public class Vdeo {
 
 
     public void fPago() {
-        System.out.println("Listo su tarjeta fue creda ");
+        System.out.println("Listo la reciba su tarjeta en cajero cercano ");
         System.out.println("---------Ya puede usarla--------");
-        System.out.println(" Nombres :" + nombre);
-        System.out.println("Dni:" + dni);
+        System.out.println(" Nombres :" +Usuarios);
+        System.out.println("Contraseña:---****---");
         System.out.println("Lugar de mayor uso:" + lugar);
         System.out.println(" Numero de Tarjeta :" + Num_Tarjeta[Number]);
         System.out.println("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta");
@@ -393,6 +515,7 @@ public class Vdeo {
             escritor.write(" Numero de Tarjeta :" + Num_Tarjeta[Number]);
             escritor.write("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta");
             escritor.close();
+
 
 
         } catch (IOException factos) {
