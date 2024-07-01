@@ -1,0 +1,50 @@
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
+
+public class pepa {
+    public static void main(String[] args) {
+        final String username = "mathiask357@gmail.com"; // Coloca tu correo electrónico aquí
+        final String password = "tu_contraseña"; // Coloca tu contraseña aquí
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com"); // Cambia el host si usas otro proveedor de correo
+        props.put("mail.smtp.port", "587"); // Puerto para Gmail
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("destinatario@ejemplo.com")); // Cambia aquí el destinatario
+            message.setSubject("Boleta de compra");
+            message.setText("Adjunto encontrarás la boleta de compra.");
+
+            // Adjuntar archivo
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            Multipart multipart = new MimeMultipart();
+            String filePath = "/ruta/al/archivo/boleta.pdf"; // Cambia la ruta al archivo que quieres enviar
+            DataSource source = new FileDataSource(filePath);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName("boleta.pdf"); // Nombre del archivo adjunto
+            multipart.addBodyPart(messageBodyPart);
+
+            message.setContent(multipart);
+
+            Transport.send(message);
+
+            System.out.println("Correo enviado exitosamente");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+}
