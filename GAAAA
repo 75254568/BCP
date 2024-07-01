@@ -538,13 +538,14 @@ public class Vdeo {
         return null;
     }
 
-    public String Menuchatbot() {
-        System.out.printf("Bienvenido a chat bot de BCP\n");
+       public String Menuchatbot() {
+        System.out.printf("Bienvenido a CHATBOT de BCP\n");
         System.out.printf("Esoja una de las opciones\n");
         System.out.printf("1: Cuentas\n");
         System.out.printf("2: Credito personal\n");
         System.out.printf("3: Seguro BCP\n");
-        System.out.printf("4: libro de reclamaciones\n");
+        System.out.printf("4: Libro de reclamaciones\n");
+        System.out.printf("5: Ir al menu principal\n");
         opcion = resident.nextInt();
         resident.nextLine();
         switch (opcion) {
@@ -565,8 +566,12 @@ public class Vdeo {
                 this.freclamaciones();
                 break;
 
+            case 5:
+                this.MenuGeneral();
+                break;
+
             default:
-                System.out.println("Opcion no válida");
+                System.out.println("Opcion no válida\n");
                 this.Menuchatbot();
                 break;
 
@@ -585,7 +590,8 @@ public class Vdeo {
         System.out.println("Escoja una opcion");
         System.out.printf("1: Iniciar sesion\n");
         System.out.printf("2: Conocer los tipos de cuentas\n");
-        System.out.println("3: Ir al menu principal");
+        System.out.println("3: Ir al menu principal\n");
+        System.out.printf("4: Ir al menu de chatbot\n");
         opcion = resident.nextInt();
         switch (opcion) {
 
@@ -599,7 +605,9 @@ public class Vdeo {
                 System.out.printf("3. Cuenta CTS\n");
                 System.out.printf("4. Cuenta Premio\n");
                 System.out.printf("5. Cuenta Ilimitada\n");
-                System.out.println("6. Ir al menu pruncipal");
+                System.out.println("6. Ir al menu pruncipal\n");
+                System.out.printf("7. Ir al menu de chatbot\n");
+                System.out.printf("8. Ir al menu de cuentas\n");
                 opcion = resident.nextInt();
                 switch (opcion) {
 
@@ -607,6 +615,7 @@ public class Vdeo {
                         System.out.printf("Si haces múltiples operaciones digitales, la Cuenta Digital es para ti. " +
                                 " Estos son sus beneficios:\n");
                         Arrays.sort(inducaciones);
+                        this.Menuchatbot();
                         break;
 
                     case 2:
@@ -622,36 +631,51 @@ public class Vdeo {
                                 break;
                             default:
                                 System.out.printf("Esa opcion es invalida\n");
+                                this.Menuchatbot();
                         }
 
                     case 3:
                         Arrays.sort(opciones);
+                        this.Menuchatbot();
                         break;
 
                     case 4:
                         System.out.printf("¡Participa por 1 MILLÓN de soles abriendo tu Cuenta Premio!\n");
                         System.out.printf("Solo realiza un depósito de S/ 1,000 o $ 300 y obtén estos beneficios:\n");
                         Arrays.sort(pasos);
+                        this.Menuchatbot();
                         break;
 
                     case 5:
                         System.out.printf("Haz tus operaciones sin límites por solo S/ 12.00 o $ 4.80 al mes. \n" +
                                 "La Cuenta Ilimitada tiene estos beneficios:\n");
                         Arrays.sort(beneficios);
-                        break;
-
-                    case 6:
                         this.Menuchatbot();
                         break;
 
+                    case 6:
+                        this.MenuGeneral();
+                        break;
+
+                    case 7:
+                        this.Menuchatbot();
+                        break;
+
+                    case 8:
+                        this.fcuentas();
+                        break;
+
                     default:
-                        System.out.println("Opcion invalida");
+                        System.out.println("Opcion invalida\n");
                 }
                 break;
 
             case 3:
-                this.Menuchatbot();
+                this.MenuGeneral();
                 break;
+
+            case 4:
+                this.Menuchatbot();
 
             default:
                 System.out.printf("Esa opcion no esta disponible\n");
@@ -663,16 +687,29 @@ public class Vdeo {
         System.out.printf("Esta es la información sobre Crédito Efectivo.\n");
         System.out.printf("1. Quiero información general sobre Crédito Efectivo\n");
         System.out.printf("2. Quiero ver mis Créditos Personales\n");
+        System.out.printf("3. Ir al menu principal\n");
+        System.out.printf("4. Ir al menu de chatbot\n");
         opcion = resident.nextInt();
         switch (opcion) {
             case 1:
                 System.out.printf("Para conocer más sobre Crédito Efectivo, ingresa a nuestra web:\n" +
                         "https://www.viabcp.com/creditos/credito-efectivo\n");
+                this.Menuchatbot();
                 break;
+
             case 2:
                 System.out.printf("Ingresa a nuestra web y conoce los requisitos para adquirir un Préstamo Personal:\n" +
                         "https://www.viabcp.com/creditos/credito-efectivo/prestamo-personal-bcp\n");
+                this.Menuchatbot();
                 break;
+
+            case 3:
+                this.MenuGeneral();
+                break;
+
+            case 4:
+                this.Menuchatbot();
+
             default:
                 System.out.printf("Esa opicion es invalida\n");
         }
@@ -682,39 +719,59 @@ public class Vdeo {
     public String fseguro() {
         System.out.printf("Aquí puedes revisar información sobre Seguros.\n");
         System.out.printf("1. ¿Cuál es la cobertura de los Seguros BCP?\n");
-        System.out.printf("3. ¿Qué pasa si no pago mi Seguro BCP?\n");
+        System.out.printf("2. ¿Qué pasa si no pago mi Seguro BCP?\n");
+        System.out.printf("3. Ir la menu principal\n");
+        System.out.printf("4. Ir al menu de chatbot\n");
         opcion = resident.nextInt();
         switch (opcion) {
+
             case 1:
                 System.out.printf("Elige un seguro para ver su cobertura:\n");
                 System.out.printf("1. Seguro Protección de Tarjetas \n");
-                System.out.printf("2. Seguro Protección de Tarjetas Plus \n");
-                System.out.printf("3. Seguro Múltiple \n");
+                System.out.printf("2. seguro soat");
+                System.out.printf("3. Ir al menu\n");
+                System.out.printf("4. Ir al menu de chatbot\n");
+                System.out.printf("5. Ir al menu de seguro\n");
                 opcion = resident.nextInt();
                 switch (opcion) {
                     case 1:
-                        System.out.printf("Toma en cuenta que tienes el Seguro de Protección de Tarjetas \n" +
-                                "solo si lo has adquirido antes de enero 2020. Si quieres ver el detalle \n" +
-                                "de tus seguros, escribe mis seguros.\n");
-                        break;
-                    case 2:
                         System.out.printf("El Seguro de Protección de Tarjetas protege hasta por S/ 25,000 \n" +
                                 "todas tus tarjetas del BCP y tarjetas de crédito de otros bancos en los siguientes casos: \n" +
                                 "robo, pérdida, engaños en internet o cambiazo.\n");
+                        this.Menuchatbot();
                         break;
+                    case 2:
+                        this.fSoat();
+                        break;
+
                     case 3:
-                        System.out.printf("El Seguro Múltiple te brinda respaldo económico en caso de accidentes, \n" +
-                                "hospitalización por enfermedades o fallecimiento. El beneficio lo recibirás tú y tu familia, \n" +
-                                "dependiendo del saldo promedio de tu cuenta afiliada.\n");
+                        this.MenuGeneral();
                         break;
+
+                    case 4:
+                        this.Menuchatbot();
+
+                    case 5:
+                        this.fseguro();
+
                     default:
                         System.out.printf("Esa opcion no esta disponible\n");
                 }
                 break;
+
             case 2:
                 System.out.printf("Si no pagas tu seguro por más de tres meses consecutivos, \n" +
                         "será anulado y perderás la cobertura.\n");
+                this.Menuchatbot();
                 break;
+
+            case 3:
+                this.MenuGeneral();
+                break;
+
+            case 4:
+                this.Menuchatbot();
+
             default:
                 System.out.printf("Esa opion es invalida\n");
         }
@@ -728,54 +785,57 @@ public class Vdeo {
     }
 
     public void MenuOpciones() {
-        System.out.println("Libro de reclamaciones");
+        System.out.println("Libro de reclamaciones\n");
         while (true) {
-            System.out.println("Opciones:");
-            System.out.println("1: Agregar una línea");
-            System.out.println("2: Mostrar contenido");
-            System.out.println("3: Guardar y salir");
-            System.out.println("4: Ir al menu principal");
-            System.out.print("Eliga una opción: ");
+            System.out.println("Opciones:\n");
+            System.out.println("1: escribir reclamo\n");
+            System.out.println("2: Mostrar reclamo\n");
+            System.out.println("3: Guardar\n");
+            System.out.println("4: Ir al menu principal\n");
+            System.out.printf("5: Ir al menu de chatbot\n");
+            System.out.print("Eliga una opción: \n");
 
             int opcion = resident.nextInt();
             resident.nextLine();
 
             if (opcion == 1) {
-                System.out.print("Ingrese una línea de texto: ");
+                System.out.print("Ingrese su reclamo: \n");
                 String line = resident.nextLine();
                 if (contadorlineas < lineas.length) {
                     lineas[contadorlineas] = line;
                     contadorlineas++;
                 } else {
-                    System.out.println("Se ha alcanzado el límite de líneas.");
+                    System.out.println("Se ha alcanzado el límite.\n");
                 }
             } else if (opcion == 2) {
-                System.out.println("Contenido:");
+                System.out.println("Contenido:\n");
                 for (int i = 0; i < contadorlineas; i++) {
                     System.out.println(lineas[i]);
                 }
             } else if (opcion == 3) {
                 this.freclamaciones();
-                break;
             } else if (opcion == 4) {
+                this.MenuGeneral();
+            } else if (opcion == 5) {
                 this.Menuchatbot();
                 break;
             } else {
-                System.out.println("Opción no válida. Inténtalo de nuevo.");
+                System.out.println("Opción no válida. Inténtalo de nuevo.\n");
             }
         }
         ExportarBloc();
     }
 
     public String ExportarBloc() {
-        try (FileWriter writer = new FileWriter("bloc_de_notas.txt")) {
+        try (FileWriter writer = new FileWriter("bloc_de_notas.txt\n")) {
             for (int i = 0; i < contadorlineas; i++) {
                 writer.write(lineas[i] + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("El contenido se ha guardado en 'bloc_de_notas.txt'.");
+        System.out.println("El contenido se ha guardado en 'bloc_de_notas.txt'.\n");
+        this.Menuchatbot();
         return null;
     }
 
