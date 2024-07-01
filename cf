@@ -1,0 +1,77 @@
+boolean usur = false;
+        {
+                do
+
+                {
+                System.out.println("Bienvenido a: \n");
+                System.out.println("BBBBBBB     CCCCCC     PPPPPPP");
+                System.out.println("BB    BB   CC    CC   PP     PP");
+                System.out.println("BB    BB   CC         PP     PP");
+                System.out.println("BBBBBBB    CC         PPPPPPP");
+                System.out.println("BB    BB   CC         PP");
+                System.out.println("BB    BB   CC    CC   PP");
+                System.out.println("BBBBBBB     CCCCCC    PP\n");
+                System.out.println("Por favor ingrese su nombre de usuario");
+names = resident.nextLine();
+                switch (names) {
+        case "kevin":
+        System.out.println("Escriba su contraseña de 4 digitos");
+contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+        if (Integer.parseInt(contra) == contraseñas[0]) {
+        System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + usuarios[0]);
+usur = true;
+        }
+        } else {
+        System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                                break;
+                                case "roshell":
+                                System.out.println("Escriba su contraseña de 4 digitos");
+contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+        if (Integer.parseInt(contra) == contraseñas[1]) {
+        System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + usuarios[1]);
+usur = true;
+        }
+        } else {
+        System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                                break;
+                                case "mathias":
+                                System.out.println("Escriba su contraseña de 4 digitos");
+contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+        if (Integer.parseInt(contra) == contraseñas[2]) {
+        System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + usuarios[2]);
+usur = true;
+        }
+        } else {
+        System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                                break;
+                                case "will":
+                                System.out.println("Escriba su contraseña de 4 digitos");
+contra = resident.nextLine();
+                        if (contra.matches("\\d{4}")) {
+        if (Integer.parseInt(contra) == contraseñas[3]) {
+        System.out.println("Contraseña correcta");
+                                System.out.println("Bienvenido " + usuarios[3]);
+usur = true;
+        }
+        } else {
+        System.out.println("Nuestro sistema lo detecto como falsificador");
+                            System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                        }
+                                break;
+default:
+        System.out.println("incorrecto");
+                        System.out.println("vuelva a intentarlo");
+                }
+                        } while(!usur);
