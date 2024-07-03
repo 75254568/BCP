@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Vdeo {
+public class vdeo {
     //Lovi General
     private String T_auto, modelo;
     private int anioFabricacion;
@@ -17,6 +17,7 @@ public class Vdeo {
     String[] Contraseñas = {"1234", "4321", "2341", "9876"};
     String[] Tarjetas_Debito = {"Visa Clasica", "Visa Light", "Visa Latam Pass","Menu"};
     String[] Tarjetas_Credito = {"Visa Clasica BCP", "Visa Clasica Latam Pass","Menu"};
+    String[] Num_Operacion = {"87643234", "65487352", "37752494", "72198327"};
     String[] despedida = {"Ganamos todos o perdemos todos", "Queremos ayudarte a encontrar lo que necesites."};
     String[] Anuncios = {"Comprar entradas para la Copa America", "Gana premios pagando desde la app", "Boletos para el concierto de Libido "};
     double[] saldos = {500.0, 1000.0, 750.0, 1200.0};
@@ -24,6 +25,7 @@ public class Vdeo {
     Random random = new Random();
     int America = random.nextInt(Anuncios.length);
     int Number = random.nextInt(Num_Tarjeta.length);
+    int Numb= random.nextInt(Num_Operacion.length);
     double precio = 20;
     String[] carrito = new String[Tarjetas_Debito.length];
     String[] carrito_extra = new String[Tarjetas_Credito.length];
@@ -119,8 +121,8 @@ public class Vdeo {
                         System.out.println("vuelva a intentarlo");
                 }
             } while(!usur);
-    }
-    return null;
+        }
+        return null;
     }
 
     public String MenuGeneral() {
@@ -491,14 +493,18 @@ public class Vdeo {
 
 
     public void fPago() {
-        System.out.println("Listo la reciba su tarjeta en cajero cercano ");
-        System.out.println("---------Ya puede usarla--------");
-        System.out.println(" Nombres :" +Usuarios);
-        System.out.println("Contraseña:---****---");
-        System.out.println("Lugar de mayor uso:" + lugar);
-        System.out.println(" Numero de Tarjeta :" + Num_Tarjeta[Number]);
-        System.out.println("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta");
+        System.out.println("--------------------------------------------------\n");
+        System.out.println("            Listo, su Tarjeta fue creada con exito¡¡           \n");
+        System.out.println("---------------------------------------------------------\n\n");
+        System.out.println(" Nombres :"  +names+ "\n");
+        System.out.println("Contraseña: ---****--- \n");
+        System.out.println("Num.Operacion" +Num_Operacion[Numb]+ "\n");
+        System.out.println("Fecha: 05/07/2024");
+        System.out.println(" Numero de Tarjeta :" + Num_Tarjeta[Number] +"\n\n");
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta\n");
         System.out.println("Puedes recoger tu tarjeta en cualquiera de nuestras agencias de Lunes a Viernes de 9:00 a.m. a 06:00 p.m. y Sábados de 09:00 a.m. a 01:00 p.m.");
+        System.out.println("-----------------------------------------------------------------");
         this.fExportarBoleta();
 
     }
@@ -507,21 +513,33 @@ public class Vdeo {
         try {
             File archivo = new File("D:\\boleta.txt");
             FileWriter escritor = new FileWriter(archivo);
-            escritor.write("Listo su tarjeta fue creda ");
-            escritor.write("---------Ya puede usarla--------");
-            escritor.write(" Nombres :" + nombre);
-            escritor.write("Dni:" + dni);
-            escritor.write("Lugar de mayor uso:" + lugar);
-            escritor.write(" Numero de Tarjeta :" + Num_Tarjeta[Number]);
-            escritor.write("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta");
+
+            escritor.write("--------------------------------------------------\n");
+            escritor.write("            Listo, su Tarjeta fue creada con exito¡¡           \n");
+            escritor.write("---------------------------------------------------------\n\n");
+
+            escritor.write("Fecha: 05/07/2024\n");
+            escritor.write("Num.Operacion:" +Num_Operacion[Numb]+ "\n");
+
+
+            escritor.write("----------------------------------------------------------------\n\n");
+            escritor.write("Tarjeta creada exitosamente.\n");
+            escritor.write(" Numero de Tarjeta :" + Num_Tarjeta[Number] +"\n");
+            escritor.write(" Nombres :"  +names+ "\n");
+            escritor.write("Contraseña: ---****--- \n\n");
+            escritor.write("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta\n");
+            escritor.write("Puedes recoger tu tarjeta en cualquiera de nuestras agencias.\n");
+
+
+            escritor.write("----------------------------------------------------\n");
+            escritor.write("      Gracias por confiar en BCP!         \n");
+            escritor.write("----------------------------------------------------\n");
+
             escritor.close();
 
-
-
-        } catch (IOException factos) {
-            System.out.println("Error al exportar la factura.");
-            factos.printStackTrace();
-
+        } catch (IOException e) {
+            System.out.println("Error al exportar la boleta.");
+            e.printStackTrace();
         }
 
     }
@@ -538,7 +556,7 @@ public class Vdeo {
         return null;
     }
 
-       public String Menuchatbot() {
+    public String Menuchatbot() {
         System.out.printf("Bienvenido a CHATBOT de BCP\n");
         System.out.printf("Esoja una de las opciones\n");
         System.out.printf("1: Cuentas\n");
@@ -840,7 +858,7 @@ public class Vdeo {
     }
 
     public static void main(String[] args) {
-        Vdeo chiqui = new Vdeo();
+        vdeo chiqui = new vdeo();
         chiqui.Inicio_Sesion();
     }
 }
