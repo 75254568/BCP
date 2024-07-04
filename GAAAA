@@ -803,10 +803,10 @@ public class vdeo {
     }
 
     public void MenuOpciones() {
-        System.out.println("Libro de reclamaciones\n");
+        System.out.println("Bienvenido al libro de reclamaciones de BCP");
         while (true) {
-            System.out.println("Opciones:\n");
-            System.out.println("1: escribir reclamo\n");
+            System.out.println("Eliga una de las opciones:\n");
+            System.out.println("1: Escriba su reclamo \n");
             System.out.println("2: Mostrar reclamo\n");
             System.out.println("3: Guardar\n");
             System.out.println("4: Ir al menu principal\n");
@@ -817,7 +817,7 @@ public class vdeo {
             resident.nextLine();
 
             if (opcion == 1) {
-                System.out.print("Ingrese su reclamo: \n");
+                System.out.print("Redacte su reclamo: \n");
                 String line = resident.nextLine();
                 if (contadorlineas < lineas.length) {
                     lineas[contadorlineas] = line;
@@ -845,7 +845,7 @@ public class vdeo {
     }
 
     public String ExportarBloc() {
-        try (FileWriter writer = new FileWriter("bloc_de_notas.txt\n")) {
+        try (FileWriter writer = new FileWriter("Bloc_de_notas.txt\n")) {
             for (int i = 0; i < contadorlineas; i++) {
                 writer.write(lineas[i] + "\n");
             }
@@ -856,6 +856,7 @@ public class vdeo {
         this.Menuchatbot();
         return null;
     }
+
 
     public static void main(String[] args) {
         vdeo chiqui = new vdeo();
