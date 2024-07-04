@@ -1,0 +1,65 @@
+import java.util.Scanner;
+  public class frefire {
+    public static void main(String[] args) {
+        String apodo, correo, correo_in, contraseña, contraseña_in;
+        Scanner adan = new Scanner(System.in);
+        System.out.println("Bienvenido a Garena Free Fire");
+        System.out.println("-----CREAR CUENTA-----");
+        System.out.println("Ingrese su apodo");
+        apodo = adan.nextLine();
+        System.out.println("Ingrese su correo");
+        correo = adan.nextLine();
+        System.out.println("Ingrese su contraseña");
+        contraseña = adan.nextLine();
+        System.out.println("-----INICIAR SESION-----");
+        System.out.println("Ingrese su correo");
+        correo_in = adan.nextLine();
+        System.out.println("Ingrese su contraseña");
+        contraseña_in = adan.nextLine();
+        if (correo_in.equals(correo) && contraseña_in.equals(contraseña)) {
+            System.out.println("Bienvenido: " + apodo);
+            System.out.println("Seleccione su personaje:");
+            System.out.println("Mujer/Varón");
+            String genero = "";
+            genero = adan.nextLine();
+            switch (genero) {
+                case "Mujer":
+                    System.out.println("Seleccione entre estos personajes:");
+                    System.out.println("Moco/Kelly");
+                    String personaje_mujer = "";
+                    personaje_mujer = adan.nextLine();
+                    switch (personaje_mujer) {
+                        case "Moco":
+                            System.out.println("Tienes localización de enemigos");
+                            break;
+                        case "Kelly":
+                            System.out.println("Puedes correr más rápido");
+                            break;
+                        default:
+                            System.out.println("Ese personaje no existe");
+                    }
+                    break;
+                case "Varón":
+                    System.out.println("Seleccione entre estos personajes:");
+                    System.out.println("Adam/Carlos");
+                    String personaje_varon = "";
+                    personaje_varon = adan.nextLine();
+                    switch (personaje_varon) {
+                        case "Adam":
+                            System.out.println("Tienes habilidad de camuflaje");
+                            break;
+                        case "Carlos":
+                            System.out.println("Puedes recargar más rápido");
+                            break;
+                        default:
+                            System.out.println("Ese personaje no existe");
+                    }
+                    break;
+                default:
+                    System.out.println("Género no válido");
+            }
+        } else {
+            System.out.println(" Inténtalo de nuevo.");
+        }
+    }
+}
