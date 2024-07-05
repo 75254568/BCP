@@ -38,8 +38,8 @@ public class GAAAA {
     String names, contra;
     String[] lineas = new String[1000];
     int contadorlineas = 0;
-    int currentUserIndex;
-
+ 
+    
     public String frodo() {
         Scanner resident = new Scanner(System.in);
         System.out.println("\nSeleccione una opción:");
@@ -61,7 +61,7 @@ public class GAAAA {
                 System.out.println("Opción inválida. Inténtelo nuevamente.");
         }
         return null;
-            }
+    }
 
 
     //menu William
@@ -684,261 +684,341 @@ public class GAAAA {
 
     //ABRAHAM
     public String fChatBot() {
-        this.Menuchatbot();
+        this.fMenuChat_Bot();
         return null;
     }
 
-    public String Menuchatbot() {
-        System.out.printf("Bienvenido a CHATBOT de BCP\n");
-        System.out.printf("Esoja una de las opciones\n");
-        System.out.printf("1: Cuentas\n");
-        System.out.printf("2: Credito personal\n");
-        System.out.printf("3: Seguro BCP\n");
-        System.out.printf("4: Libro de reclamaciones\n");
-        System.out.printf("5: Ir al menu principal\n");
-        opcion = resident.nextInt();
+    public String fMenuChat_Bot(){
+        System.out.printf("\n");
+        System.out.printf("Bienvenido al Chat Bot de BCP\n");
+        System.out.printf("Escoja una de las siguientes opciones\n");
+        System.out.printf("1: Contactanos\n");
+        System.out.printf("2: Tarjetas\n");
+        System.out.printf("3: Prestamos\n");
+        System.out.printf("4: Cuenta ahorro\n");
+        System.out.printf("5: SOATS\n");
+        System.out.printf("6: Libro de reclamaciones\n");
+        System.out.printf("7: Menu principal\n");
+        opcion= resident.nextInt();
         resident.nextLine();
-        switch (opcion) {
+        switch (opcion){
 
             case 1:
-                this.fcuentas();
+                this.fContactos();
                 break;
 
             case 2:
-                this.fcreditopersonal();
+                this.fTarjetaschat();
                 break;
 
             case 3:
-                this.fseguro();
+                this.fPrestamos();
                 break;
 
             case 4:
-                this.freclamaciones();
+                this.fCuentaahorro();
                 break;
 
             case 5:
-                this.MenuGeneral();
+                this.fSoats();
+                break;
+
+            case 6:
+                this.freclamaciones();
+                break;
+
+            case 7:
+
                 break;
 
             default:
-                System.out.println("Opcion no válida\n");
-                this.Menuchatbot();
-                break;
-
+                System.out.printf("Opcion invalida, intente de nuevo\n");
         }
         return null;
     }
 
-    public String fcuentas() {
+    public String fContactos(){
+        System.out.printf("\n");
+        System.out.printf("---Comuniquese con nuestro acesor marcando al: ---\n");
+        System.out.printf("(01) 3119898\n");
+        System.out.printf("\n");
+        System.out.printf("---O tambien encuentranos en nuestras redes sociales---\n");
+        System.out.printf("Facebook nos encuentras como \"Banco de Crédito BCP\" \n");
+        System.out.printf("Instagram nos encuentras como \"@bcpbancodecredito\" \n");
+        System.out.printf("Twitter nos encuentras como \"@BCPComunica\" \n");
+        System.out.printf("Linkedin nos encuentras como \"Banco de Crédito BCP\" \n");
+        System.out.printf("\n");
+        System.out.printf("---Ubicanos en: ---\n");
+        System.out.printf("Jr Inca Garcilazo 255, Juliaca\n");
+        System.out.printf("Jr. Túpac Amaru N°1176 ESq. Calle Sucre y Jr. Enrique P. Caceres San Román, Juliaca\n");
+        System.out.printf("Jáuregui 239, Juliaca\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
 
-        String[] inducaciones = {"▪ No cobra mantenimiento, ▪ Operaciones sin costo a través de Banca por Internet, Banca Móvil y Yape, ▪ Depósitos y retiros sin costo a nivel nacional en Cajeros y Agentes BCP, Descarga gratuita de tu Estado de Cuenta por Banca por Internet, Banca Móvil o Plataforma Digital."};
-        String[] instrucciones = {"¡Disfruta de descuentos exclusivos de hasta el 70%!, Conoce los centros afiliados a la Cuenta Sueldo BCP ingresando a, https://www.viabcp.com/beneficios/cuenta-sueldo, Para abrir tu Cuenta Sueldo BCP forma sencilla y segura, ingresa a nuestra web:, https://www.abretucuenta.viabcp.com/#/preferencias?codProd=CTASL"};
-        String[] opciones = {"Traslada tu CTS al BCP y recibe una súper tasa, Entérate de todos los detalles en nuestra web: https://www.viabcp.com/campana-traslado-cts-sorteo"};
-        String[] pasos = {"▪ Operaciones ilimitadas por Ventanillas, ▪ Operaciones sin costo a través de Banca por Internet, Banca Móvil y Yape, Depósitos y retiros sin costo a nivel nacional en Cajeros y Agentes BCP, ▪ Descarga gratuita de tu Estado de Cuenta por Banca por Internet, Banca Móvil o Plataforma Digital, ▪ Retiros ilimitados en cajeros de otras instituciones sin costo a nivel nacional"};
-        String[] beneficios = {"▪ Operaciones ilimitadas por Ventanillas, ▪ Operaciones sin costo a través de Banca por Internet, Banca Móvil y Yape, ▪ Depósitos y retiros sin costo a nivel nacional en Cajeros y Agentes BCP, ▪ Descarga gratuita de tu Estado de Cuenta por Banca por Internet, Banca Móvil o Plataforma Digital, ▪ Retiros ilimitados en cajeros de otras instituciones sin costo a nivel nacional"};
-
-        System.out.println("Escoja una opcion");
-        System.out.printf("1: Iniciar sesion\n");
-        System.out.printf("2: Conocer los tipos de cuentas\n");
-        System.out.println("3: Ir al menu principal\n");
-        System.out.printf("4: Ir al menu de chatbot\n");
-        opcion = resident.nextInt();
-        switch (opcion) {
-
+    public String fTarjetaschat(){
+        System.out.printf("\n");
+        System.out.printf("Tenemos una varidad de tarjetas\n");
+        System.out.printf("Tenemos: \n");
+        System.out.printf("1- Las American Express\n");
+        System.out.printf("2- Tarjetas Visa\n");
+        System.out.printf("3- Menu chat bot\n");
+        System.out.printf("4- Menu principal\n");
+        opcion= resident.nextInt();
+        switch (opcion){
             case 1:
-                this.Inicio_Sesion();
+                System.out.printf("\n");
+                System.out.printf("--Entre ellas tenemos: --\n");
+                System.out.printf("Amex Clásica LATAM Pass\n");
+                System.out.printf("Amex Oro LATAM Pass\n");
+                System.out.printf("Amex Platinum LATAM Pass\n");
+                System.out.printf("Amex Black LATAM Pass\n");
+                this.fTarjetaschat();
                 break;
 
             case 2:
-                System.out.printf("1. Cuenta Digital\n");
-                System.out.printf("2. Cuenta Sueldo\n");
-                System.out.printf("3. Cuenta CTS\n");
-                System.out.printf("4. Cuenta Premio\n");
-                System.out.printf("5. Cuenta Ilimitada\n");
-                System.out.println("6. Ir al menu pruncipal\n");
-                System.out.printf("7. Ir al menu de chatbot\n");
-                System.out.printf("8. Ir al menu de cuentas\n");
-                opcion = resident.nextInt();
-                switch (opcion) {
+                System.out.printf("\n");
+                System.out.printf("--Entre ellas tenemos: --\n");
+                System.out.printf("Visa Clásica\n");
+                System.out.printf("Visa Light\n");
+                System.out.printf("Visa Clásica LATAM Pass\n");
+                System.out.printf("Visa Oro LATAM Pass\n");
+                System.out.printf("Visa Platinum LATAM Pass\n");
+                System.out.printf("Visa Signature LATAM Pass\n");
+                System.out.printf("Visa Infinite Sapphire LATAM Pass\n");
+                System.out.printf("Visa Infinite Iridium LATAM Pass\n");
+                System.out.printf("Visa iO\n");
+                this.fTarjetaschat();
+                break;
 
+            case 3:
+                this.fMenuChat_Bot();
+                break;
+
+            case 4:
+
+                break;
+
+            default:
+                System.out.printf("Opcion invalida, intente de nuevo\n");
+        }
+        return null;
+    }
+
+    public String fPrestamos(){
+        System.out.printf("\n");
+        System.out.printf("Contamos con estos prestamos: \n");
+        System.out.printf("1- Prestamos personales\n");
+        System.out.printf("2- Prestamo tarjetero\n");
+        System.out.printf("3- Menu chat bot\n");
+        System.out.printf("4- Menu principal\n");
+        opcion= resident.nextInt();
+        switch (opcion){
+            case 1:
+                System.out.printf("\n");
+                System.out.printf("Tenemos en: \n");
+                System.out.printf("1. Prestamo personal\n");
+                System.out.printf("2. Prestamo con garantia hipotecaria\n");
+                System.out.printf("3. Prestamo hipotecario compartido\n");
+                System.out.printf("4. Prestamo con garantia liquida\n");
+                System.out.printf("5. Menu chat bot\n");
+                opcion= resident.nextInt();
+                switch (opcion){
                     case 1:
-                        System.out.printf("Si haces múltiples operaciones digitales, la Cuenta Digital es para ti. " +
-                                " Estos son sus beneficios:\n");
-                        Arrays.sort(inducaciones);
-                        this.Menuchatbot();
+                        System.out.printf("\n");
+                        System.out.printf("---Obtenlo en pocos pasos---\n");
+                        System.out.printf("Solicítalo desde la App Banca Móvil BCP en la sección \"Para ti\" o a través de la web y recíbelo al instante en tu cuenta.\n");
+                        System.out.printf("---No te pedimos garantía---\n");
+                        System.out.printf("Te prestamos hasta S/ 350,000 sin garantías.\n");
+                        System.out.printf("---Plazos Flexibles---\n");
+                        System.out.printf("Cuotas desde 3 hasta 60 meses.\n");
+                        this.fPrestamos();
                         break;
 
                     case 2:
-                        System.out.printf("¿Qué te gustaría saber sobre la Cuenta Sueldo BCP?\n");
-                        System.out.printf("1. Beneficios Cuenta Sueldo\n");
-                        System.out.printf("2. Adelanto de sueldo\n");
-                        opcion = resident.nextInt();
-                        switch (opcion) {
+                        System.out.printf("\n");
+                        System.out.printf("---Todo lo que deves saber---\n");
+                        System.out.printf("1- Beneficios\n");
+                        System.out.printf("2- Más ventajas\n");
+                        System.out.printf("3- Menu prestamo\n");
+                        opcion= resident.nextInt();
+                        switch (opcion){
                             case 1:
-                                Arrays.sort(instrucciones);
+                                System.out.printf("\n");
+                                System.out.printf("Tenemos préstamos desde S/ 87,500 (o $24,000) hasta S/ 600,000 (o $162,000)\n");
+                                System.out.printf("Financiamientos con plazos de hasta 15 años con hasta 14 cuotas al año\n");
+                                System.out.printf("Crédito de libre disponibilidad que te permite disponer de altos montos de dinero al dejar como garantía un inmueble\n");
+                                System.out.printf("Podrás realizar pagos adelantados, libres de comisión, para acortar el plazo del préstamo o la cuota mensual\n");
+                                System.out.printf("Ten en cuenta que el monto máximo del préstamo es de hasta 70% del valor del inmueble\n");
+                                System.out.printf("El monto del préstamo, las cuotas y el plazo estarán sujetos a evaluación crediticia\n");
+                                this.fPrestamos();
                                 break;
+
                             case 2:
+                                System.out.printf("\n");
+                                System.out.printf("Adquiere el Crédito Efectivo con Garantía Hipotecaria en cualquiera de nuestras Agencias BCP\n");
+                                System.out.printf("Solicita tu estado de cuenta por correo electrónico sin costo alguno para conocer el estado de tu crédito\n");
+                                System.out.printf("Incluye un Seguro de Desgravamen y Seguro de Inmueble para brindarte una protección integral\n");
+                                System.out.printf("Seguro de Desgravamen: Asegura la cancelación de la deuda pendiente en caso de fallecimiento o invalidez total y permanente del titular del crédito (y/o de su cónyuge en caso de contratación de seguro de desgravamen mancomunado)\n");
+                                System.out.printf("Seguro de Inmueble: Protege contra daños materiales del inmueble por imprevistos (como incendios, sismos, rotura de tuberías, etc.) El seguro cubre sólo el valor de edificación del inmueble; es decir, no cubre el valor del terreno.  Actualmente el valor de la prima se calcula sobre el valor de tasación del inmueble (sin incluir terreno)\n");
+                                this.fPrestamos();
                                 break;
+
+                            case 3:
+                                this.fPrestamos();
+
                             default:
-                                System.out.printf("Esa opcion es invalida\n");
-                                this.Menuchatbot();
+                                System.out.printf("Opcion invalida, intente de nuevo\n");
                         }
 
-                    case 3:
-                        Arrays.sort(opciones);
-                        this.Menuchatbot();
-                        break;
-
-                    case 4:
-                        System.out.printf("¡Participa por 1 MILLÓN de soles abriendo tu Cuenta Premio!\n");
-                        System.out.printf("Solo realiza un depósito de S/ 1,000 o $ 300 y obtén estos beneficios:\n");
-                        Arrays.sort(pasos);
-                        this.Menuchatbot();
-                        break;
-
-                    case 5:
-                        System.out.printf("Haz tus operaciones sin límites por solo S/ 12.00 o $ 4.80 al mes. \n" +
-                                "La Cuenta Ilimitada tiene estos beneficios:\n");
-                        Arrays.sort(beneficios);
-                        this.Menuchatbot();
-                        break;
-
-                    case 6:
-                        this.MenuGeneral();
-                        break;
-
-                    case 7:
-                        this.Menuchatbot();
-                        break;
-
-                    case 8:
-                        this.fcuentas();
-                        break;
-
-                    default:
-                        System.out.println("Opcion invalida\n");
-                }
-                break;
-
-            case 3:
-                this.MenuGeneral();
-                break;
-
-            case 4:
-                this.Menuchatbot();
-
-            default:
-                System.out.printf("Esa opcion no esta disponible\n");
-        }
-        return null;
-    }
-
-    public String fcreditopersonal() {
-        System.out.printf("Esta es la información sobre Crédito Efectivo.\n");
-        System.out.printf("1. Quiero información general sobre Crédito Efectivo\n");
-        System.out.printf("2. Quiero ver mis Créditos Personales\n");
-        System.out.printf("3. Ir al menu principal\n");
-        System.out.printf("4. Ir al menu de chatbot\n");
-        opcion = resident.nextInt();
-        switch (opcion) {
-            case 1:
-                System.out.printf("Para conocer más sobre Crédito Efectivo, ingresa a nuestra web:\n" +
-                        "https://www.viabcp.com/creditos/credito-efectivo\n");
-                this.Menuchatbot();
-                break;
-
-            case 2:
-                System.out.printf("Ingresa a nuestra web y conoce los requisitos para adquirir un Préstamo Personal:\n" +
-                        "https://www.viabcp.com/creditos/credito-efectivo/prestamo-personal-bcp\n");
-                this.Menuchatbot();
-                break;
-
-            case 3:
-                this.MenuGeneral();
-                break;
-
-            case 4:
-                this.Menuchatbot();
-
-            default:
-                System.out.printf("Esa opicion es invalida\n");
-        }
-        return null;
-    }
-
-    public String fseguro() {
-        System.out.printf("Aquí puedes revisar información sobre Seguros.\n");
-        System.out.printf("1. ¿Cuál es la cobertura de los Seguros BCP?\n");
-        System.out.printf("2. ¿Qué pasa si no pago mi Seguro BCP?\n");
-        System.out.printf("3. Ir la menu principal\n");
-        System.out.printf("4. Ir al menu de chatbot\n");
-        opcion = resident.nextInt();
-        switch (opcion) {
-
-            case 1:
-                System.out.printf("Elige un seguro para ver su cobertura:\n");
-                System.out.printf("1. Seguro Protección de Tarjetas \n");
-                System.out.printf("2. seguro soat");
-                System.out.printf("3. Ir al menu\n");
-                System.out.printf("4. Ir al menu de chatbot\n");
-                System.out.printf("5. Ir al menu de seguro\n");
-                opcion = resident.nextInt();
-                switch (opcion) {
-                    case 1:
-                        System.out.printf("El Seguro de Protección de Tarjetas protege hasta por S/ 25,000 \n" +
-                                "todas tus tarjetas del BCP y tarjetas de crédito de otros bancos en los siguientes casos: \n" +
-                                "robo, pérdida, engaños en internet o cambiazo.\n");
-                        this.Menuchatbot();
-                        break;
-                    case 2:
-                        this.fSoat();
                         break;
 
                     case 3:
-                        this.MenuGeneral();
+                        System.out.printf("\n");
+                        System.out.printf("---Todo lo que deves saber---\n");
+                        System.out.printf("1- Beneficios\n");
+                        System.out.printf("2- Más ventajas\n");
+                        System.out.printf("3- Menu prestamo\n");
+                        opcion= resident.nextInt();
+                        switch (opcion){
+                            case 1:
+                                System.out.printf("\n");
+                                System.out.printf("Este producto considera el ingreso de los dos propietarios para que puedan conseguir un crédito de mayor volumen mediante un doble aval.\n");
+                                System.out.printf("Puedes solicitar desde S/ 87,500 con plazos que van de 1 a 10 años.\n");
+                                System.out.printf("Ten en cuenta que el total del préstamo va hasta el 70 del valor del inmueble.\n");
+                                System.out.printf("El inmueble que se deja como garantía debe ser 100 usado sólo como vivienda.\n");
+                                System.out.printf("Hasta 12 cuotas al año.\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 2:
+                                System.out.printf("\n");
+                                System.out.printf("Adquirir el crédito en cualquiera de nuestras Agencias BCP y/o comunicándote directamente con tu Funcionario BCP\n");
+                                System.out.printf("Solicita tu estado de cuenta por correo electrónico sin costo alguno para conocer el estado de tu crédito.\n");
+                                System.out.printf("Si deseas, puedes afiliarte al nuestro Seguro protección financiera, el cual pagará puntualmente tus cuotas en caso de desempleo o incapacidad\n");
+                                System.out.printf("Incluye un Seguro de Desgravamen y Seguro de Inmueble para brindarte una protección integral\n");
+                                System.out.printf("La Garantía Hipotecaria (GAHI) se agrega al valor que da el banco con el crédito hipotecario libre para darle a ambos clientes un crédito de libre disponibilidad\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 3:
+                                this.fPrestamos();
+                                break;
+
+                            default:
+                                System.out.printf("Opcion invalida, intente de nuevo\n");
+                        }
                         break;
 
                     case 4:
-                        this.Menuchatbot();
+                        System.out.printf("\n");
+                        System.out.printf("---Todo lo que deves saber---\n");
+                        System.out.printf("1- Beneficios\n");
+                        System.out.printf("2- Más ventajas\n");
+                        System.out.printf("3- Menu prestamo\n");
+                        opcion= resident.nextInt();
+                        switch (opcion){
+                            case 1:
+                                System.out.printf("\n");
+                                System.out.printf("Con el BCP puedes solicitar un préstamo con garantía en tus fondos.\n");
+                                System.out.printf("Se considera garantía líquida: Depósitos a plazo, Certificados Bancarios de moneda extranjera y fondos mutuos\n");
+                                System.out.printf("Plazos de 6 a 60 meses.\n");
+                                System.out.printf("Se puede dejar en garantía el depósito de un tercero, siempre y cuando este firme todos los documentos necesarios en los que autorice la afectación de la garantía.\n");
+                                System.out.printf("No se requiere que sustentes tus ingresos.\n");
+                                System.out.printf("No hay límite de edad para solicitar el préstamo.\n");
+                                System.out.printf("Puedes solicitar tu préstamo en moneda nacional o extranjera.\n");
+                                System.out.printf("Puedes modificar tus cuotas, prepagar o cancelar tu préstamo, en el momento que desees.\n");
+                                System.out.printf("El monto del préstamo, las cuotas y el plazo estarán sujetos a evaluación crediticia.\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 2:
+                                System.out.printf("\n");
+                                System.out.printf("Puedes adquirir el crédito en cualquiera de nuestras Agencias BCP y/o comunicándote directamente con tu Funcionario BCP.\n");
+                                System.out.printf("Incluimos el Seguro de Desgravamen, el cual cancela la deuda de inmediato en caso de muerte, durante todo el plazo de endeudamiento.\n");
+                                System.out.printf("Si deseas realizar prepagos o cancelar tu préstamo, tienes la opción de hacerlo total o parcialmente, sin penalidades, sin comisiones y descontando los intereses respectivos.\n");
+                                System.out.printf("Puedes solicitar el cargo automático de tus cuotas en cualquiera de tus cuentas BCP.\n");
+                                System.out.printf("Si deseas, puedes afiliarte al nuestro Seguro de Protección Financiera, el cual pagará puntualmente tus cuotas en caso de desempleo o incapacidad.\n");
+                                System.out.printf("La cuota de tu crédito incluye el Seguro de Desgravamen, que protege a tu familia cancelando la deuda pendiente en caso de fallecimiento o invalidez permanente del titular del crédito.\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 3:
+                                this.fPrestamos();
+                                break;
+
+                            default:
+                                System.out.printf("Opcion invalida, intente de nuevo\n");
+                        }
+                        break;
 
                     case 5:
-                        this.fseguro();
+                        this.fMenuChat_Bot();
+                        break;
 
                     default:
-                        System.out.printf("Esa opcion no esta disponible\n");
+                        System.out.printf("Opcion invalida, intente de nuevo\n");
                 }
                 break;
 
             case 2:
-                System.out.printf("Si no pagas tu seguro por más de tres meses consecutivos, \n" +
-                        "será anulado y perderás la cobertura.\n");
-                this.Menuchatbot();
+                System.out.printf("\n");
+                System.out.printf("------Beneficios de tu Préstamo Tarjetero------\n");
+                System.out.printf("--Exclusivo de Tarjeta de Crédito--\n");
+                System.out.printf("Obtén hasta el 95 de tu línea de crédito disponible\n");
+                System.out.printf("--Tu defines el número de cuotas--\n");
+                System.out.printf("Con financiamiento de 6 hasta 60 meses\n");
+                System.out.printf("--Una Tasa preferencial para ti--");
+                System.out.printf("Nuestros asesores se encargarán de ayudarte a obtener una tasa más baja\n");
+                this.fPrestamos();
                 break;
 
             case 3:
-                this.MenuGeneral();
+                this.fMenuChat_Bot();
                 break;
 
             case 4:
-                this.Menuchatbot();
+                break;
 
             default:
-                System.out.printf("Esa opion es invalida\n");
+                System.out.printf("Opcion invalida, intente de nuevo\n");
         }
         return null;
     }
 
+    public String fCuentaahorro(){
+        System.out.printf("\n");
+        System.out.printf("--Cuenta Digital--\n");
+        System.out.printf("Ideal si haces todo desde tu celular, usando Banca Móvil y Yape.\n");
+        System.out.printf("--Cuenta Premio--\n");
+        System.out.printf("Es la cuenta ideal si quieres ahorrar y además participas por 1 millón de soles.\n");
+        System.out.printf("--Cuenta Ilimitada--\n");
+        System.out.printf("Ideal si haces muchas operaciones en ventanilla, tiene un costo de mantenimiento mensual.\n");
+        System.out.printf("--Cuenta Sueldo--\n");
+        System.out.printf("La cuenta gratuita para recibir tu sueldo con muchos beneficios.\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
+
+    public String fSoats(){
+        System.out.printf("\n");
+        System.out.printf("Compra tu SOAT y obten estos beneficios: \n");
+        System.out.printf("--Atención las 24 horas--\n");
+        System.out.printf("Ante cualquier accidente de tránsito\n");
+        System.out.printf("--Planchado y pintura--\n");
+        System.out.printf("20 de descuento\n");
+        System.out.printf("--20 de descuento--\n");
+        System.out.printf("En llantas y aros.\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
 
     public String freclamaciones() {
-        MenuOpciones();
-        return null;
-    }
-
-    public void MenuOpciones() {
-        System.out.println("Libro de reclamaciones\n");
+        System.out.printf("\n");
+        System.out.println("Bienvenido al libro de reclamaciones de BCP\n");
         while (true) {
-            System.out.println("Opciones:\n");
-            System.out.println("1: escribir reclamo\n");
+            System.out.println("Eliga una de las opciones:\n");
+            System.out.println("1: Escriba su reclamo \n");
             System.out.println("2: Mostrar reclamo\n");
             System.out.println("3: Guardar\n");
             System.out.println("4: Ir al menu principal\n");
@@ -949,7 +1029,7 @@ public class GAAAA {
             resident.nextLine();
 
             if (opcion == 1) {
-                System.out.print("Ingrese su reclamo: \n");
+                System.out.print("Redacte su reclamo: \n");
                 String line = resident.nextLine();
                 if (contadorlineas < lineas.length) {
                     lineas[contadorlineas] = line;
@@ -965,19 +1045,20 @@ public class GAAAA {
             } else if (opcion == 3) {
                 this.freclamaciones();
             } else if (opcion == 4) {
-                this.MenuGeneral();
+
             } else if (opcion == 5) {
-                this.Menuchatbot();
+                this.fMenuChat_Bot();
                 break;
             } else {
                 System.out.println("Opción no válida. Inténtalo de nuevo.\n");
             }
         }
         ExportarBloc();
+        return null;
     }
 
     public String ExportarBloc() {
-        try (FileWriter writer = new FileWriter("bloc_de_notas.txt\n")) {
+        try (FileWriter writer = new FileWriter("Bloc_de_notas.txt\n")) {
             for (int i = 0; i < contadorlineas; i++) {
                 writer.write(lineas[i] + "\n");
             }
@@ -985,7 +1066,7 @@ public class GAAAA {
             e.printStackTrace();
         }
         System.out.println("El contenido se ha guardado en 'bloc_de_notas.txt'.\n");
-        this.Menuchatbot();
+        this.fMenuChat_Bot();
         return null;
     }
 
