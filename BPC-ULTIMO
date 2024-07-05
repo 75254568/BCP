@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class GAAAA {
+public class ga_ultimo {
     //Lovi General
     private String T_auto, modelo;
     private int anioFabricacion;
@@ -15,6 +15,8 @@ public class GAAAA {
     private static final Scanner scanner = new Scanner(System.in);
     //LOVI
     Scanner resident = new Scanner(System.in);
+    String[] fecha = {"2 de cada mes", "15 de cada mes", "28 de cada mes"};
+    String[] cuotas = {"5 cuotas", "10 cuotas", "15 cuotas"};
     String[] Usuarios = {"kevin", "mathias", "abraham", "willian", "antoni"};
     String[] Contraseñas = {"1234", "4321", "2341", "9876", "5432"};
     int[] dnis = {60061661, 75254568, 60836936, 75073575, 73889258};
@@ -26,6 +28,7 @@ public class GAAAA {
     double[] saldos = {500.0, 1000.0, 750.0, 1200.0};
     String[] Num_Tarjeta = {"3242-1235-2131-3434", "6456-8793-3467-6754", "4366-3567-1230-7543", "1243-4876-3521-1321"};
     Random random = new Random();
+    int s = random.nextInt(fecha.length);
     String unsuario,conntraseña,nuevoUsuario,nuevaContraseña;
     int America = random.nextInt(Anuncios.length);
     int Numb=random.nextInt(Num_Operacion.length);
@@ -33,13 +36,14 @@ public class GAAAA {
     double precio = 20;
     String[] carrito = new String[Tarjetas_Debito.length];
     String[] carrito_extra = new String[Tarjetas_Credito.length];
-    String nombre, Password, dni, lugar;
-    int opcion;
-    String names, contra;
+    String nombre, Password, dni, lugar,clave,cuo,si_no;
+    double lucas;
+    int opcion, monto,monto_total,tansfe;
+    String names, contra, solici;
     String[] lineas = new String[1000];
     int contadorlineas = 0;
- 
-    
+
+
     public String frodo() {
         Scanner resident = new Scanner(System.in);
         System.out.println("\nSeleccione una opción:");
@@ -314,6 +318,328 @@ public class GAAAA {
     }
 
     //KEVIN
+    public void fExportarBoleta_prestamo() {
+        try {
+            File archivo = new File("D:\\boleta.txt");
+            FileWriter escritor = new FileWriter(archivo);
+
+            escritor.write("--------------------------------------------------\n");
+            escritor.write("            << Prestamo Exitoso >>         \n");
+            escritor.write("---------------------------------------------------\n\n");
+
+            escritor.write("Fecha: 05/07/2024\n");
+            escritor.write("Num.Operacion:" + Num_Operacion[Numb] + "\n");
+
+
+            escritor.write("----------------------------------------------------------------\n\n");
+            escritor.write(" Numero de Tarjeta :" + Num_Tarjeta[Number] + "\n");
+            escritor.write(" Nombres :" + names + "\n");
+            escritor.write("Contraseña: ---**--- \n\n");
+            escritor.write("Prestamo: s/" + monto +"\n");
+            escritor.write("Saldo: "+lucas+"\n");
+            escritor.write("monto mensual: "+monto_total+"\n");
+
+
+            escritor.write("----------------------------------------------------\n");
+            escritor.write("      Gracias por confiar en BCP!         \n");
+            escritor.write("----------------------------------------------------\n");
+
+            escritor.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al exportar la boleta.");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void fprestamo() {
+        int monto_5,monto_10,monto_15,interes;
+        System.out.println("ingrese su Usuario");
+        nombre = resident.nextLine();
+        if (Arrays.asList(names).contains(nombre)) {
+            System.out.println("ingrese su contraseña");
+            clave = resident.nextLine();
+            if (Arrays.asList(Contraseñas).contains(clave)) {
+                System.out.println("Cuantas veces ya va solicitando un restamo");
+                System.out.println("seleccione");
+                System.out.println("1. es la 1era vez que solicito");
+                System.out.println("2. es mi 2da a 4ta vez solicitando");
+                System.out.println("3. es mi 5ta a 10ma vez solicitando");
+                solici = resident.nextLine();
+                switch (solici) {
+                    case "1":
+                        System.out.println("Usted puede sacar un prestamo maximo de 2500");
+                        System.out.println("Cuanto quisiera sacar");
+                        monto = resident.nextInt();
+                        lucas = monto + (saldos[1]);
+                        if (monto<2500){
+                            System.out.println("En cuantas cuotas desea pagar?");
+                            System.out.println("1. "+cuotas[0]);
+                            System.out.println("2. "+cuotas[1]);
+                            System.out.println("3. "+cuotas[2]);
+                            cuo=resident.nextLine();
+                            cuo=resident.nextLine();
+                            switch (cuo) {
+                                case "1":
+                                    monto_5 = monto / 5;
+                                    interes = monto / 10;
+                                    monto_total = monto_5 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "2":
+                                    monto_10 = monto / 10;
+                                    interes = monto / 10;
+                                    monto_total = monto_10 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "3":
+                                    monto_15 = monto / 15;
+                                    interes = monto / 10;
+                                    monto_total = monto_15 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+
+
+                            }
+                            break;
+
+                        }else {
+                            System.out.println("SOLICITUD DE PRESTAMO DENEGADA");
+                        }return;
+
+                    case "2":
+                        System.out.println("Usted puede sacar un restamo maximo de s/.5000");
+                        System.out.println("Cuanto quisiera sacar");
+                        monto = resident.nextInt();
+                        lucas = monto + (saldos[1]);
+                        if (monto<5000){
+                            System.out.println("En cuantas cuotas desea pagar?");
+                            System.out.println("1. "+cuotas[0]);
+                            System.out.println("2. "+cuotas[1]);
+                            System.out.println("3. "+cuotas[2]);
+                            cuo=resident.nextLine();
+                            cuo=resident.nextLine();
+                            switch (cuo){
+                                case "1":
+                                    monto_5 = monto / 5;
+                                    interes = monto / 10;
+                                    monto_total = monto_5 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "2":
+                                    monto_10 = monto / 10;
+                                    interes = monto / 10;
+                                    monto_total = monto_10 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "3":
+                                    monto_15 = monto / 15;
+                                    interes = monto / 10;
+                                    monto_total = monto_15 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+
+
+
+                            }
+                            break;
+                        }else{
+                            System.out.println("SOLICITUD DE PRESTAMO DENEGADA");
+                        }return;
+
+                    case "3":
+                        System.out.println("Usted puede sacar un restamo maximo de s/.10000");
+                        System.out.println("Cuanto quisiera sacar");
+                        monto = resident.nextInt();
+                        lucas = monto + (saldos[1]);
+                        if (monto<10000){
+                            System.out.println("En cuantas cuotas desea pagar?");
+                            System.out.println("1. "+cuotas[0]);
+                            System.out.println("2. "+cuotas[1]);
+                            System.out.println("3. "+cuotas[2]);
+                            cuo=resident.nextLine();
+                            cuo=resident.nextLine();
+                            switch (cuo){
+                                case "1":
+                                    monto_5 = monto / 5;
+                                    interes = monto / 10;
+                                    monto_total = monto_5 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "2":
+                                    monto_10 = monto / 10;
+                                    interes = monto / 10;
+                                    monto_total = monto_10 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "3":
+                                    monto_15 = monto / 15;
+                                    interes = monto / 10;
+                                    monto_total = monto_15 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+
+                            }
+
+
+                        }else {
+                            System.out.println("SOLICITUD DE PRESTAMO DENEGADA");
+                        }
+                        break;
+                }
+
+            } else {
+                System.out.println("Contraseña incorrecta");
+            }
+        } else {
+            System.out.println("Usuario incorrecto");
+        }
+    }
 
     //Mathias
     public String fTarjetas() {
@@ -627,7 +953,7 @@ public class GAAAA {
         System.out.println("---------------------------------------------------------\n\n");
         System.out.println(" Nombres :"  +names+ "\n");
         System.out.println(" Nombres :"  +nuevoUsuario+ "\n");
-        System.out.println("Contraseña: ---****--- \n");
+        System.out.println("Contraseña: ---**--- \n");
         System.out.println("Num.Operacion" +Num_Operacion[Numb]+ "\n");
         System.out.println("Fecha: 05/07/2024");
         System.out.println(" Numero de Tarjeta :" + Num_Tarjeta[Number] +"\n\n");
@@ -658,7 +984,7 @@ public class GAAAA {
             escritor.write(" Nombres :"  +names+ "\n");
             escritor.write(" Nombres :"  +nuevoUsuario+ "\n");
 
-            escritor.write("Contraseña: ---****--- \n\n");
+            escritor.write("Contraseña: ---**--- \n\n");
             escritor.write("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta\n");
             escritor.write("Puedes recoger tu tarjeta en cualquiera de nuestras agencias.\n");
 
@@ -1071,7 +1397,7 @@ public class GAAAA {
     }
 
     public static void main(String[] args) {
-        GAAAA chiqui = new GAAAA();
+        ga_ultimo chiqui = new ga_ultimo();
         chiqui.frodo();
     }
 }
