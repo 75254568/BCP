@@ -1,0 +1,1401 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+
+public class hoy {
+
+    private String T_auto, modelo;
+    private int anioFabricacion;
+    private int cantidad, opc;
+    private String op;
+    private static final String FILE_NAME = "usuarios.txt";
+    private static final Map<String, String> usuarios = new HashMap<>();
+    private static final Scanner scanner = new Scanner(System.in);
+
+    Scanner resident = new Scanner(System.in);
+    String[] fecha = {"2 de cada mes", "15 de cada mes", "28 de cada mes"};
+    String[] cuotas = {"5 cuotas", "10 cuotas", "15 cuotas"};
+    String[] Usuarios = {"kevin", "abraham","mathias", "willian", "antoni"};
+    String[] Contraseñas = {"1234", "4321", "2341", "9876", "5432"};
+    int[] dnis = {60061661, 75254568, 60836936, 75073575, 73889258};
+    String[] Tarjetas_Debito = {"Visa Clasica", "Visa Light", "Visa Latam Pass", "Menu"};
+    String[] Tarjetas_Credito = {"Visa Clasica BCP", "Visa Clasica Latam Pass", "Menu"};
+    String [] Num_Operacion= {"65841235","54821547","69578432","25452158"};
+    String[] despedida = {"Ganamos todos o perdemos todos", "Queremos ayudarte a encontrar lo que necesites."};
+    String[] Anuncios = {"Comprar entradas para la Copa America", "Gana premios pagando desde la app", "Boletos para el concierto de Libido "};
+    double[] saldos = {500.0, 1000.0, 750.0, 1200.0};
+    String[] Num_Tarjeta = {"3242-1235-2131-3434", "6456-8793-3467-6754", "4366-3567-1230-7543", "1243-4876-3521-1321"};
+    Random random = new Random();
+    int s = random.nextInt(fecha.length);
+    String unsuario,conntraseña,nuevoUsuario,nuevaContraseña;
+    int America = random.nextInt(Anuncios.length);
+    int Numb=random.nextInt(Num_Operacion.length);
+    int Number = random.nextInt(Num_Tarjeta.length);
+    double precio = 20;
+    String[] carrito = new String[Tarjetas_Debito.length];
+    String[] carrito_extra = new String[Tarjetas_Credito.length];
+    String nombre, Password, dni, lugar,clave,cuo,si_no;
+    double lucas;
+    int opcion, monto,monto_total,tansfe;
+    String names, contra, solici;
+    String[] lineas = new String[1000];
+    int contadorlineas = 0;
+
+
+    public String frodo() {
+        Scanner resident = new Scanner(System.in);
+        System.out.println("\nSeleccione una opción:");
+        System.out.println("1. Iniciar sesión");
+        System.out.println("2. Crear nueva cuenta");
+        System.out.println("3. Salir");
+        int numeritos = resident.nextInt();
+        switch (numeritos) {
+            case 1:
+                this.Inicio_Sesion();
+                break;
+            case 2:
+                this.crearNuevaCuenta();
+                break;
+            case 3:
+                System.out.println("ADIOS");
+                break;
+            default:
+                System.out.println("Opción inválida. Inténtelo nuevamente.");
+        }
+        return null;
+    }
+
+
+
+    public String  Inicio_Sesion() {
+
+        boolean usur = false;
+        {
+            do
+            {
+                System.out.println("Bienvenido a: \n");
+                System.out.println("BBBBBBB     CCCCCC     PPPPPPP");
+                System.out.println("BB    BB   CC    CC   PP     PP");
+                System.out.println("BB    BB   CC         PP     PP");
+                System.out.println("BBBBBBB    CC         PPPPPPP");
+                System.out.println("BB    BB   CC         PP");
+                System.out.println("BB    BB   CC    CC   PP");
+                System.out.println("BBBBBBB     CCCCCC    PP\n");
+                System.out.println("1.- Cuentas creadas");
+                System.out.println("2.- Cuentas existentes");
+                System.out.println("3.- Salir");
+                int frodo = resident.nextInt();
+                if (frodo==1) {
+                    System.out.println("\nInicio de sesión");
+
+                    System.out.print("Ingrese su nombre de usuario: ");
+                    String nombreUsuario = scanner.nextLine().trim();
+
+                    if (!usuarios.containsKey(nombreUsuario)) {
+                        System.out.println("Nombre de usuario incorrecto. Inténtelo nuevamente.");
+                        return null;
+                    }
+
+                    System.out.print("Ingrese su contraseña de 4 dígitos: ");
+                    String contraseña = scanner.nextLine().trim();
+
+                    if (usuarios.get(nombreUsuario).equals(contraseña)) {
+                        System.out.println("Inicio de sesión exitoso. Bienvenido, " + nombreUsuario + "!");
+                        MenuGeneral();
+                        // Aquí podrías llamar a tu método MenuGeneral() si lo tienes implementado.
+                    } else {
+                        System.out.println("Contraseña incorrecta. Inténtelo nuevamente.");
+                    }
+                }
+                else if(frodo==2)   {
+                    System.out.println("Escriba el nombre del usuario existente");
+                    String userñl = resident.nextLine();
+                    names = resident.nextLine();
+                    switch (names) {
+                        case "kevin":
+                            System.out.println("Escriba su contraseña de 4 digitos");
+                            contra = resident.nextLine();
+                            if (contra.matches("\\d{4}")) {
+                                if (Arrays.asList(Contraseñas[0]).contains(contra)) {
+                                    System.out.println("Contraseña correcta");
+                                    System.out.println("Bienvenido " + Usuarios[0]);
+                                    usur = true;
+                                    MenuGeneral();
+                                }
+                            } else {
+                                System.out.println("Nuestro sistema lo detecto como falsificador");
+                                System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                            }
+                            break;
+                        case "abraham":
+                            System.out.println("Escriba su contraseña de 4 digitos");
+                            contra = resident.nextLine();
+                            if (contra.matches("\\d{4}")) {
+                                if (Arrays.asList(Contraseñas[1]).contains(contra)) {
+                                    System.out.println("Contraseña correcta");
+                                    System.out.println("Bienvenido " + Usuarios[1]);
+                                    usur = true;
+                                    MenuGeneral();
+
+                                }
+                            } else {
+                                System.out.println("Nuestro sistema lo detecto como falsificador");
+                                System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                            }
+                            break;
+                        case "mathias":
+                            System.out.println("Escriba su contraseña de 4 digitos");
+                            contra = resident.nextLine();
+                            if (contra.matches("\\d{4}")) {
+                                if (Arrays.asList(Contraseñas[2]).contains(contra)) {
+                                    System.out.println("Contraseña correcta");
+                                    System.out.println("Bienvenido " + Usuarios[2]);
+                                    usur = true;
+                                    MenuGeneral();
+
+                                }
+                            } else {
+                                System.out.println("Nuestro sistema lo detecto como falsificador");
+                                System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                            }
+                            break;
+                        case "willian":
+                            System.out.println("Escriba su contraseña de 4 digitos");
+                            contra = resident.nextLine();
+                            if (contra.matches("\\d{4}")) {
+                                if (Arrays.asList(Contraseñas[3]).contains(contra)) {
+                                    System.out.println("Contraseña correcta");
+                                    System.out.println("Bienvenido " + Usuarios[3]);
+                                    usur = true;
+                                    MenuGeneral();
+                                }
+                            } else {
+                                System.out.println("Nuestro sistema lo detecto como falsificador");
+                                System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                            }
+                            break;
+                        case "antoni":
+                            System.out.println("Escriba su contraseña de 4 digitos");
+                            contra = resident.nextLine();
+                            if (contra.matches("\\d{4}")) {
+                                if (Arrays.asList(Contraseñas[4]).contains(contra)) {
+                                    System.out.println("Contraseña correcta");
+                                    System.out.println("Bienvenido " + Usuarios[4]);
+                                    usur = true;
+                                    MenuGeneral();
+                                }
+                            } else {
+                                System.out.println("Nuestro sistema lo detecto como falsificador");
+                                System.out.println("escriba bien la contraseña o llamaremos a la policia");
+                            }
+                            break;
+                        default:
+                            System.out.println("incorrecto");
+                            System.out.println("vuelva a intentarlo");
+                    }
+                } else if (frodo==3){
+                    System.out.println("ADIOS");
+                    usur = true;
+                } else{
+                    System.out.println("Lo sentimos solo tiene 3 opciones validas");
+                }
+
+            } while(!usur);
+        }
+        return null;
+
+    }
+
+    public String crearNuevaCuenta() {
+        System.out.println("\nCreación de nueva cuenta");
+
+        System.out.print("Ingrese un nombre de usuario único: ");
+        nuevoUsuario = scanner.nextLine().trim();
+
+        if (usuarios.containsKey(nuevoUsuario)) {
+            System.out.println("El nombre de usuario ya existe. Intente con otro.");
+            return null;
+        }
+
+        System.out.print("Ingrese una contraseña de 4 dígitos: ");
+        nuevaContraseña = scanner.nextLine().trim();
+
+        if (!nuevaContraseña.matches("\\d{4}")) {
+            System.out.println("La contraseña debe ser de exactamente 4 dígitos numéricos.");
+            return null;
+        }
+
+        usuarios.put(nuevoUsuario, nuevaContraseña);
+        System.out.println("Nueva cuenta creada exitosamente para el usuario: " + nuevoUsuario);
+
+        guardarCuentaEnArchivo(nuevoUsuario, nuevaContraseña);
+
+        System.out.println("\n¿Qué desea hacer ahora?");
+        System.out.println("1. Iniciar sesión");
+        System.out.println("2. Crear otra cuenta");
+        int opcion = obtenerEntero("Ingrese el número de la opción: ");
+
+        switch (opcion) {
+            case 1:
+                this.Inicio_Sesion();
+                break;
+            case 2:
+                this.crearNuevaCuenta();
+                break;
+            default:
+                System.out.println("Opción inválida. Saliendo del programa.");
+                break;
+        }
+        return null;
+    }
+
+    public String guardarCuentaEnArchivo(String nuevoUsuario, String nuevaContraseña) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
+            bw.write(unsuario + ":" + conntraseña);
+            bw.newLine();
+        } catch (IOException e) {
+            System.out.println("Error al guardar la cuenta en el archivo: " + e.getMessage());
+        }
+        return null;
+    }
+
+    private static void cargarUsuariosDesdeArchivo() {
+
+    }
+
+    private static int obtenerEntero(String mensaje) {
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                return Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, ingrese un número válido.");
+            }
+        }
+    }
+
+    public String MenuGeneral() {
+        Scanner BcP = new Scanner(System.in);
+        String opcion;
+        System.out.printf("Bienvenido a BCP \n");
+        System.out.printf("En que te puedo ayudar hoy\n");
+        System.out.printf("1: Solicitar un Tranferir Dinero\n");
+        System.out.printf("2: Cambiar Usuario\n");
+        System.out.printf("3: Tarjeta\n");
+        System.out.printf("4: Chat bot\n");
+        System.out.println("5:Obten tu SOAT Digital\n");
+        System.out.println("6: Sacar prestamo\n");
+        opcion = BcP.nextLine();
+        switch (opcion) {
+            case "1":
+                break;
+            case "2":
+                this.Inicio_Sesion();
+                break;
+            case "3":
+                this.fTarjetas();
+                break;
+            case "4":
+                this.fChatBot();
+                break;
+            case "5":
+                this.fSoat();
+                break;
+            case "6":
+                this.fprestamo();
+                break;
+
+            default:
+                System.out.printf("Esa opcion no esta disponible escriba otra opcion\n");
+        }
+
+
+        return null;
+    }
+
+
+    public void fExportarBoleta_prestamo() {
+        try {
+            File archivo = new File("D:\\frodo.txt");
+            FileWriter escritor = new FileWriter(archivo);
+
+            escritor.write("--------------------------------------------------\n");
+            escritor.write("            << Prestamo Exitoso >>         \n");
+            escritor.write("---------------------------------------------------\n\n");
+
+            escritor.write("Fecha: 05/07/2024\n");
+            escritor.write("Num.Operacion:" + Num_Operacion[Numb] + "\n");
+
+
+            escritor.write("----------------------------------------------------------------\n\n");
+            escritor.write(" Numero de Tarjeta :" + Num_Tarjeta[Number] + "\n");
+            escritor.write(" Nombres :" + names + "\n");
+            escritor.write("Contraseña: ---**--- \n\n");
+            escritor.write("Prestamo: s/" + monto +"\n");
+            escritor.write("Saldo: "+lucas+"\n");
+            escritor.write("monto mensual: "+monto_total+"\n");
+
+
+            escritor.write("----------------------------------------------------\n");
+            escritor.write("      Gracias por confiar en BCP!         \n");
+            escritor.write("----------------------------------------------------\n");
+
+            escritor.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al exportar la boleta.");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void fprestamo() {
+        int monto_5,monto_10,monto_15,interes;
+        System.out.println("ingrese su Usuario");
+        nombre = resident.nextLine();
+        if (Arrays.asList(names).contains(nombre)) {
+            System.out.println("ingrese su contraseña");
+            clave = resident.nextLine();
+            if (Arrays.asList(Contraseñas).contains(clave)) {
+                System.out.println("Cuantas veces ya va solicitando un restamo");
+                System.out.println("seleccione");
+                System.out.println("1. es la 1era vez que solicito");
+                System.out.println("2. es mi 2da a 4ta vez solicitando");
+                System.out.println("3. es mi 5ta a 10ma vez solicitando");
+                solici = resident.nextLine();
+                switch (solici) {
+                    case "1":
+                        System.out.println("Usted puede sacar un prestamo maximo de 2500");
+                        System.out.println("Cuanto quisiera sacar");
+                        monto = resident.nextInt();
+                        lucas = monto + (saldos[1]);
+                        if (monto<2500){
+                            System.out.println("En cuantas cuotas desea pagar?");
+                            System.out.println("1. "+cuotas[0]);
+                            System.out.println("2. "+cuotas[1]);
+                            System.out.println("3. "+cuotas[2]);
+                            cuo=resident.nextLine();
+                            cuo=resident.nextLine();
+                            switch (cuo) {
+                                case "1":
+                                    monto_5 = monto / 5;
+                                    interes = monto / 10;
+                                    monto_total = monto_5 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "2":
+                                    monto_10 = monto / 10;
+                                    interes = monto / 10;
+                                    monto_total = monto_10 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "3":
+                                    monto_15 = monto / 15;
+                                    interes = monto / 10;
+                                    monto_total = monto_15 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+
+
+                            }
+                            break;
+
+                        }else {
+                            System.out.println("SOLICITUD DE PRESTAMO DENEGADA");
+                        }return;
+
+                    case "2":
+                        System.out.println("Usted puede sacar un restamo maximo de s/.5000");
+                        System.out.println("Cuanto quisiera sacar");
+                        monto = resident.nextInt();
+                        lucas = monto + (saldos[1]);
+                        if (monto<5000){
+                            System.out.println("En cuantas cuotas desea pagar?");
+                            System.out.println("1. "+cuotas[0]);
+                            System.out.println("2. "+cuotas[1]);
+                            System.out.println("3. "+cuotas[2]);
+                            cuo=resident.nextLine();
+                            cuo=resident.nextLine();
+                            switch (cuo){
+                                case "1":
+                                    monto_5 = monto / 5;
+                                    interes = monto / 10;
+                                    monto_total = monto_5 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "2":
+                                    monto_10 = monto / 10;
+                                    interes = monto / 10;
+                                    monto_total = monto_10 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "3":
+                                    monto_15 = monto / 15;
+                                    interes = monto / 10;
+                                    monto_total = monto_15 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+
+
+
+                            }
+                            break;
+                        }else{
+                            System.out.println("SOLICITUD DE PRESTAMO DENEGADA");
+                        }return;
+
+                    case "3":
+                        System.out.println("Usted puede sacar un restamo maximo de s/.10000");
+                        System.out.println("Cuanto quisiera sacar");
+                        monto = resident.nextInt();
+                        lucas = monto + (saldos[1]);
+                        if (monto<10000){
+                            System.out.println("En cuantas cuotas desea pagar?");
+                            System.out.println("1. "+cuotas[0]);
+                            System.out.println("2. "+cuotas[1]);
+                            System.out.println("3. "+cuotas[2]);
+                            cuo=resident.nextLine();
+                            cuo=resident.nextLine();
+                            switch (cuo){
+                                case "1":
+                                    monto_5 = monto / 5;
+                                    interes = monto / 10;
+                                    monto_total = monto_5 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "2":
+                                    monto_10 = monto / 10;
+                                    interes = monto / 10;
+                                    monto_total = monto_10 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+                                case "3":
+                                    monto_15 = monto / 15;
+                                    interes = monto / 10;
+                                    monto_total = monto_15 + interes;
+                                    System.out.println("PRESTAMO EXITOSO");
+                                    System.out.println("USTED VA A PAGAR: "+monto_total +" TODOS LOS: "+fecha[s]);
+                                    this.fExportarBoleta_prestamo();
+
+
+                                    System.out.println("Desea volver al menu? ");
+                                    System.out.println("1. SI");
+                                    System.out.println("2. NO");
+                                    si_no=resident.nextLine();
+                                    switch (si_no){
+                                        case "1":
+                                            this.MenuGeneral();
+                                            break;
+                                        case "2":
+                                            System.out.println("gracias por su visita");
+                                            break;
+                                    }
+                                    break;
+
+                            }
+
+
+                        }else {
+                            System.out.println("SOLICITUD DE PRESTAMO DENEGADA");
+                        }
+                        break;
+                }
+
+            } else {
+                System.out.println("Contraseña incorrecta");
+            }
+        } else {
+            System.out.println("Usuario incorrecto");
+        }
+    }
+
+
+    public String fTarjetas() {
+        System.out.println("---------Elige la tarjeta que va contigo----------");
+        System.out.println("Marque alguna de las siguientes opciones");
+        System.out.println(" 1.- Tarjeta de Debito");
+        System.out.println(" 2.- Tarjeta de Credito");
+        System.out.println("3.-Regresar al Menu");
+        opcion = resident.nextInt();
+        resident.nextLine();
+        switch (opcion) {
+            case 1:
+                this.fDebito();
+                break;
+
+            case 2:
+                this.fCredito();
+                break;
+            case 3:
+                this.MenuGeneral();
+                break;
+            default:
+                this.fTarjetas();
+
+
+        }
+        return null;
+    }
+
+    public void fDebito() {
+        System.out.println("------ Tarjeta de Debito------------");
+        System.out.println("Conoce ciertos beneficios:\n" + Anuncios[America]);
+        System.out.println("Seleccione la tarjeta de su preferencia");
+        for (int i = 0; i < Tarjetas_Debito.length; i++) {
+            System.out.println("Opcion " + (i + 1) + " : " + Tarjetas_Debito[i]);
+        }
+        opcion = resident.nextInt();
+        resident.nextLine();
+        switch (opcion) {
+            case 1:
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)||	nombre.equals(nuevoUsuario)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)||Password.equals(nuevaContraseña)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[0]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fDebito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fDebito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
+                    this.fDebito();
+                }
+                break;
+
+            case 2:
+
+
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)||	nombre.equals(nuevoUsuario)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)||Password.equals(nuevaContraseña)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[1]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fDebito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fDebito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
+                    this.fDebito();
+                }
+
+                break;
+
+            case 3:
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)||	nombre.equals(nuevoUsuario)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)||Password.equals(nuevaContraseña)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[2]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fDebito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fDebito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
+                    this.fDebito();
+                }
+                break;
+            case 4:
+                this.MenuGeneral();
+                break;
+
+            default:
+                System.out.println("Opcion no válida");
+                this.fDebito();
+                break;
+
+
+        }
+
+
+    }
+
+    public void fCredito() {
+        System.out.println("------ Tarjeta de Credito------------");
+        System.out.println(" Conoce ciertos beneficios:\n" + Anuncios[America]);
+        System.out.println("Seleccione la tarjeta de su preferencia");
+        for (int i = 0; i < Tarjetas_Credito.length; i++) {
+            System.out.println("Opcion " + (i + 1) + " : " + Tarjetas_Credito[i]);
+        }
+        opcion = resident.nextInt();
+        resident.nextLine();
+        switch (opcion) {
+            case 1:
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)||	nombre.equals(nuevoUsuario)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)||Password.equals(nuevaContraseña)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Credito[0]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fCredito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fCredito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
+                    this.fCredito();
+                }
+                break;
+
+            case 2:
+
+                System.out.println("Confirme su Usuario: ");
+                nombre=resident.nextLine();
+                if (Arrays.asList(names).contains(nombre)){
+                    System.out.println("Ingrese su Contraseña:");
+                    Password =resident.nextLine();
+                    if (Password.matches("\\d{4}")) {
+                        if (Arrays.asList(contra).contains(Password)||Password.equals(nuevaContraseña)){
+                            System.out.println("Usted eligio la tarjeta: "+Tarjetas_Debito[1]);
+                            System.out.println("¿Desea continuar con el proceso de adquirir la tajeta?  1 SI/ 2 NO / 3 Menu Principal");
+                            opcion=resident.nextInt();
+                            resident.nextLine();
+                            if(opcion==1)
+                            {
+                                System.out.println("Listo, tu cuenta BCP fue creada");
+                                System.out.println("Datos de su cuenta:");
+                                this.fPago();
+                            }
+                            else if (opcion==2){
+                                this.fDebito();
+                            }
+                            else if (opcion==3){
+                                this.fTarjetas();
+                            }
+                            else
+                            {
+                                System.out.println("Opcion no válida");
+                            }
+                        }else{
+                            System.out.println("Incorrecto, vuelva a intertarlo");
+                            this.fCredito();
+                        }
+
+                    } else {
+                        System.out.println("Contraseña incorrecta");
+                        this.fCredito();
+                    }
+
+                }
+                else{
+                    System.out.println("Incorrecto");
+                    this.fCredito();
+                }
+
+                break;
+            case 3:
+                this.fCredito();
+                break;
+            default:
+                System.out.println("Opcion no válida");
+                this.fTarjetas();
+                break;
+
+
+        }
+
+    }
+
+
+    public void fPago() {
+
+        System.out.println("--------------------------------------------------\n");
+        System.out.println("            Listo, su Tarjeta fue creada con exito¡¡           \n");
+        System.out.println("---------------------------------------------------------\n\n");
+        System.out.println(" Nombres :"  +names+ "\n");
+        System.out.println(" Nombres :"  +nuevoUsuario+ "\n");
+        System.out.println("Contraseña: ---**--- \n");
+        System.out.println("Num.Operacion" +Num_Operacion[Numb]+ "\n");
+        System.out.println("Fecha: 05/07/2024");
+        System.out.println(" Numero de Tarjeta :" + Num_Tarjeta[Number] +"\n\n");
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta\n");
+        System.out.println("Puedes recoger tu tarjeta en cualquiera de nuestras agencias de Lunes a Viernes de 9:00 a.m. a 06:00 p.m. y Sábados de 09:00 a.m. a 01:00 p.m.");
+        System.out.println("-----------------------------------------------------------------");
+        this.fExportarBoleta();
+
+    }
+
+    public void fExportarBoleta() {
+        try {
+            File archivo = new File("D:\\boleta.txt");
+            FileWriter escritor = new FileWriter(archivo);
+
+            escritor.write("--------------------------------------------------\n");
+            escritor.write("            Listo, su Tarjeta fue creada con exito¡¡           \n");
+            escritor.write("---------------------------------------------------------\n\n");
+
+            escritor.write("Fecha: 05/07/2024\n");
+            escritor.write("Num.Operacion:" +Num_Operacion[Numb]+ "\n");
+
+
+            escritor.write("----------------------------------------------------------------\n\n");
+            escritor.write("Tarjeta creada exitosamente.\n");
+            escritor.write(" Numero de Tarjeta :" + Num_Tarjeta[Number] +"\n");
+            escritor.write(" Nombres :"  +names+ "\n");
+            escritor.write(" Nombres :"  +nuevoUsuario+ "\n");
+
+            escritor.write("Contraseña: ---**--- \n\n");
+            escritor.write("En su cuenta se le agregara el monto de:s/" + precio + "por adquirir la tarjeta\n");
+            escritor.write("Puedes recoger tu tarjeta en cualquiera de nuestras agencias.\n");
+
+
+            escritor.write("----------------------------------------------------\n");
+            escritor.write("      Gracias por confiar en BCP!         \n");
+            escritor.write("----------------------------------------------------\n");
+
+            escritor.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al exportar la boleta.");
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public String fSoat() {
+        return null;
+    }
+
+
+
+    public String fChatBot() {
+        this.fMenuChat_Bot();
+        return null;
+    }
+
+    public String fMenuChat_Bot(){
+        System.out.printf("\n");
+        System.out.printf("Bienvenido al Chat Bot de BCP\n");
+        System.out.printf("Escoja una de las siguientes opciones\n");
+        System.out.printf("1: Contactanos\n");
+        System.out.printf("2: Tarjetas\n");
+        System.out.printf("3: Prestamos\n");
+        System.out.printf("4: Cuenta ahorro\n");
+        System.out.printf("5: SOATS\n");
+        System.out.printf("6: Libro de reclamaciones\n");
+        System.out.printf("7: Menu principal\n");
+        opcion= resident.nextInt();
+        resident.nextLine();
+        switch (opcion){
+
+            case 1:
+                this.fContactos();
+                break;
+
+            case 2:
+                this.fTarjetaschat();
+                break;
+
+            case 3:
+                this.fPrestamos();
+                break;
+
+            case 4:
+                this.fCuentaahorro();
+                break;
+
+            case 5:
+                this.fSoats();
+                break;
+
+            case 6:
+                this.freclamaciones();
+                break;
+
+            case 7:
+
+                break;
+
+            default:
+                System.out.printf("Opcion invalida, intente de nuevo\n");
+        }
+        return null;
+    }
+
+    public String fContactos(){
+        System.out.printf("\n");
+        System.out.printf("---Comuniquese con nuestro acesor marcando al: ---\n");
+        System.out.printf("(01) 3119898\n");
+        System.out.printf("\n");
+        System.out.printf("---O tambien encuentranos en nuestras redes sociales---\n");
+        System.out.printf("Facebook nos encuentras como \"Banco de Crédito BCP\" \n");
+        System.out.printf("Instagram nos encuentras como \"@bcpbancodecredito\" \n");
+        System.out.printf("Twitter nos encuentras como \"@BCPComunica\" \n");
+        System.out.printf("Linkedin nos encuentras como \"Banco de Crédito BCP\" \n");
+        System.out.printf("\n");
+        System.out.printf("---Ubicanos en: ---\n");
+        System.out.printf("Jr Inca Garcilazo 255, Juliaca\n");
+        System.out.printf("Jr. Túpac Amaru N°1176 ESq. Calle Sucre y Jr. Enrique P. Caceres San Román, Juliaca\n");
+        System.out.printf("Jáuregui 239, Juliaca\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
+
+    public String fTarjetaschat(){
+        System.out.printf("\n");
+        System.out.printf("Tenemos una varidad de tarjetas\n");
+        System.out.printf("Tenemos: \n");
+        System.out.printf("1- Las American Express\n");
+        System.out.printf("2- Tarjetas Visa\n");
+        System.out.printf("3- Menu chat bot\n");
+        System.out.printf("4- Menu principal\n");
+        opcion= resident.nextInt();
+        switch (opcion){
+            case 1:
+                System.out.printf("\n");
+                System.out.printf("--Entre ellas tenemos: --\n");
+                System.out.printf("Amex Clásica LATAM Pass\n");
+                System.out.printf("Amex Oro LATAM Pass\n");
+                System.out.printf("Amex Platinum LATAM Pass\n");
+                System.out.printf("Amex Black LATAM Pass\n");
+                this.fTarjetaschat();
+                break;
+
+            case 2:
+                System.out.printf("\n");
+                System.out.printf("--Entre ellas tenemos: --\n");
+                System.out.printf("Visa Clásica\n");
+                System.out.printf("Visa Light\n");
+                System.out.printf("Visa Clásica LATAM Pass\n");
+                System.out.printf("Visa Oro LATAM Pass\n");
+                System.out.printf("Visa Platinum LATAM Pass\n");
+                System.out.printf("Visa Signature LATAM Pass\n");
+                System.out.printf("Visa Infinite Sapphire LATAM Pass\n");
+                System.out.printf("Visa Infinite Iridium LATAM Pass\n");
+                System.out.printf("Visa iO\n");
+                this.fTarjetaschat();
+                break;
+
+            case 3:
+                this.fMenuChat_Bot();
+                break;
+
+            case 4:
+
+                break;
+
+            default:
+                System.out.printf("Opcion invalida, intente de nuevo\n");
+        }
+        return null;
+    }
+
+    public String fPrestamos(){
+        System.out.printf("\n");
+        System.out.printf("Contamos con estos prestamos: \n");
+        System.out.printf("1- Prestamos personales\n");
+        System.out.printf("2- Prestamo tarjetero\n");
+        System.out.printf("3- Menu chat bot\n");
+        System.out.printf("4- Menu principal\n");
+        opcion= resident.nextInt();
+        switch (opcion){
+            case 1:
+                System.out.printf("\n");
+                System.out.printf("Tenemos en: \n");
+                System.out.printf("1. Prestamo personal\n");
+                System.out.printf("2. Prestamo con garantia hipotecaria\n");
+                System.out.printf("3. Prestamo hipotecario compartido\n");
+                System.out.printf("4. Prestamo con garantia liquida\n");
+                System.out.printf("5. Menu chat bot\n");
+                opcion= resident.nextInt();
+                switch (opcion){
+                    case 1:
+                        System.out.printf("\n");
+                        System.out.printf("---Obtenlo en pocos pasos---\n");
+                        System.out.printf("Solicítalo desde la App Banca Móvil BCP en la sección \"Para ti\" o a través de la web y recíbelo al instante en tu cuenta.\n");
+                        System.out.printf("---No te pedimos garantía---\n");
+                        System.out.printf("Te prestamos hasta S/ 350,000 sin garantías.\n");
+                        System.out.printf("---Plazos Flexibles---\n");
+                        System.out.printf("Cuotas desde 3 hasta 60 meses.\n");
+                        this.fPrestamos();
+                        break;
+
+                    case 2:
+                        System.out.printf("\n");
+                        System.out.printf("---Todo lo que deves saber---\n");
+                        System.out.printf("1- Beneficios\n");
+                        System.out.printf("2- Más ventajas\n");
+                        System.out.printf("3- Menu prestamo\n");
+                        opcion= resident.nextInt();
+                        switch (opcion){
+                            case 1:
+                                System.out.printf("\n");
+                                System.out.printf("Tenemos préstamos desde S/ 87,500 (o $24,000) hasta S/ 600,000 (o $162,000)\n");
+                                System.out.printf("Financiamientos con plazos de hasta 15 años con hasta 14 cuotas al año\n");
+                                System.out.printf("Crédito de libre disponibilidad que te permite disponer de altos montos de dinero al dejar como garantía un inmueble\n");
+                                System.out.printf("Podrás realizar pagos adelantados, libres de comisión, para acortar el plazo del préstamo o la cuota mensual\n");
+                                System.out.printf("Ten en cuenta que el monto máximo del préstamo es de hasta 70% del valor del inmueble\n");
+                                System.out.printf("El monto del préstamo, las cuotas y el plazo estarán sujetos a evaluación crediticia\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 2:
+                                System.out.printf("\n");
+                                System.out.printf("Adquiere el Crédito Efectivo con Garantía Hipotecaria en cualquiera de nuestras Agencias BCP\n");
+                                System.out.printf("Solicita tu estado de cuenta por correo electrónico sin costo alguno para conocer el estado de tu crédito\n");
+                                System.out.printf("Incluye un Seguro de Desgravamen y Seguro de Inmueble para brindarte una protección integral\n");
+                                System.out.printf("Seguro de Desgravamen: Asegura la cancelación de la deuda pendiente en caso de fallecimiento o invalidez total y permanente del titular del crédito (y/o de su cónyuge en caso de contratación de seguro de desgravamen mancomunado)\n");
+                                System.out.printf("Seguro de Inmueble: Protege contra daños materiales del inmueble por imprevistos (como incendios, sismos, rotura de tuberías, etc.) El seguro cubre sólo el valor de edificación del inmueble; es decir, no cubre el valor del terreno.  Actualmente el valor de la prima se calcula sobre el valor de tasación del inmueble (sin incluir terreno)\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 3:
+                                this.fPrestamos();
+
+                            default:
+                                System.out.printf("Opcion invalida, intente de nuevo\n");
+                        }
+
+                        break;
+
+                    case 3:
+                        System.out.printf("\n");
+                        System.out.printf("---Todo lo que deves saber---\n");
+                        System.out.printf("1- Beneficios\n");
+                        System.out.printf("2- Más ventajas\n");
+                        System.out.printf("3- Menu prestamo\n");
+                        opcion= resident.nextInt();
+                        switch (opcion){
+                            case 1:
+                                System.out.printf("\n");
+                                System.out.printf("Este producto considera el ingreso de los dos propietarios para que puedan conseguir un crédito de mayor volumen mediante un doble aval.\n");
+                                System.out.printf("Puedes solicitar desde S/ 87,500 con plazos que van de 1 a 10 años.\n");
+                                System.out.printf("Ten en cuenta que el total del préstamo va hasta el 70 del valor del inmueble.\n");
+                                System.out.printf("El inmueble que se deja como garantía debe ser 100 usado sólo como vivienda.\n");
+                                System.out.printf("Hasta 12 cuotas al año.\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 2:
+                                System.out.printf("\n");
+                                System.out.printf("Adquirir el crédito en cualquiera de nuestras Agencias BCP y/o comunicándote directamente con tu Funcionario BCP\n");
+                                System.out.printf("Solicita tu estado de cuenta por correo electrónico sin costo alguno para conocer el estado de tu crédito.\n");
+                                System.out.printf("Si deseas, puedes afiliarte al nuestro Seguro protección financiera, el cual pagará puntualmente tus cuotas en caso de desempleo o incapacidad\n");
+                                System.out.printf("Incluye un Seguro de Desgravamen y Seguro de Inmueble para brindarte una protección integral\n");
+                                System.out.printf("La Garantía Hipotecaria (GAHI) se agrega al valor que da el banco con el crédito hipotecario libre para darle a ambos clientes un crédito de libre disponibilidad\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 3:
+                                this.fPrestamos();
+                                break;
+
+                            default:
+                                System.out.printf("Opcion invalida, intente de nuevo\n");
+                        }
+                        break;
+
+                    case 4:
+                        System.out.printf("\n");
+                        System.out.printf("---Todo lo que deves saber---\n");
+                        System.out.printf("1- Beneficios\n");
+                        System.out.printf("2- Más ventajas\n");
+                        System.out.printf("3- Menu prestamo\n");
+                        opcion= resident.nextInt();
+                        switch (opcion){
+                            case 1:
+                                System.out.printf("\n");
+                                System.out.printf("Con el BCP puedes solicitar un préstamo con garantía en tus fondos.\n");
+                                System.out.printf("Se considera garantía líquida: Depósitos a plazo, Certificados Bancarios de moneda extranjera y fondos mutuos\n");
+                                System.out.printf("Plazos de 6 a 60 meses.\n");
+                                System.out.printf("Se puede dejar en garantía el depósito de un tercero, siempre y cuando este firme todos los documentos necesarios en los que autorice la afectación de la garantía.\n");
+                                System.out.printf("No se requiere que sustentes tus ingresos.\n");
+                                System.out.printf("No hay límite de edad para solicitar el préstamo.\n");
+                                System.out.printf("Puedes solicitar tu préstamo en moneda nacional o extranjera.\n");
+                                System.out.printf("Puedes modificar tus cuotas, prepagar o cancelar tu préstamo, en el momento que desees.\n");
+                                System.out.printf("El monto del préstamo, las cuotas y el plazo estarán sujetos a evaluación crediticia.\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 2:
+                                System.out.printf("\n");
+                                System.out.printf("Puedes adquirir el crédito en cualquiera de nuestras Agencias BCP y/o comunicándote directamente con tu Funcionario BCP.\n");
+                                System.out.printf("Incluimos el Seguro de Desgravamen, el cual cancela la deuda de inmediato en caso de muerte, durante todo el plazo de endeudamiento.\n");
+                                System.out.printf("Si deseas realizar prepagos o cancelar tu préstamo, tienes la opción de hacerlo total o parcialmente, sin penalidades, sin comisiones y descontando los intereses respectivos.\n");
+                                System.out.printf("Puedes solicitar el cargo automático de tus cuotas en cualquiera de tus cuentas BCP.\n");
+                                System.out.printf("Si deseas, puedes afiliarte al nuestro Seguro de Protección Financiera, el cual pagará puntualmente tus cuotas en caso de desempleo o incapacidad.\n");
+                                System.out.printf("La cuota de tu crédito incluye el Seguro de Desgravamen, que protege a tu familia cancelando la deuda pendiente en caso de fallecimiento o invalidez permanente del titular del crédito.\n");
+                                this.fPrestamos();
+                                break;
+
+                            case 3:
+                                this.fPrestamos();
+                                break;
+
+                            default:
+                                System.out.printf("Opcion invalida, intente de nuevo\n");
+                        }
+                        break;
+
+                    case 5:
+                        this.fMenuChat_Bot();
+                        break;
+
+                    default:
+                        System.out.printf("Opcion invalida, intente de nuevo\n");
+                }
+                break;
+
+            case 2:
+                System.out.printf("\n");
+                System.out.printf("------Beneficios de tu Préstamo Tarjetero------\n");
+                System.out.printf("--Exclusivo de Tarjeta de Crédito--\n");
+                System.out.printf("Obtén hasta el 95 de tu línea de crédito disponible\n");
+                System.out.printf("--Tu defines el número de cuotas--\n");
+                System.out.printf("Con financiamiento de 6 hasta 60 meses\n");
+                System.out.printf("--Una Tasa preferencial para ti--");
+                System.out.printf("Nuestros asesores se encargarán de ayudarte a obtener una tasa más baja\n");
+                this.fPrestamos();
+                break;
+
+            case 3:
+                this.fMenuChat_Bot();
+                break;
+
+            case 4:
+                break;
+
+            default:
+                System.out.printf("Opcion invalida, intente de nuevo\n");
+        }
+        return null;
+    }
+
+    public String fCuentaahorro(){
+        System.out.printf("\n");
+        System.out.printf("--Cuenta Digital--\n");
+        System.out.printf("Ideal si haces todo desde tu celular, usando Banca Móvil y Yape.\n");
+        System.out.printf("--Cuenta Premio--\n");
+        System.out.printf("Es la cuenta ideal si quieres ahorrar y además participas por 1 millón de soles.\n");
+        System.out.printf("--Cuenta Ilimitada--\n");
+        System.out.printf("Ideal si haces muchas operaciones en ventanilla, tiene un costo de mantenimiento mensual.\n");
+        System.out.printf("--Cuenta Sueldo--\n");
+        System.out.printf("La cuenta gratuita para recibir tu sueldo con muchos beneficios.\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
+
+    public String fSoats(){
+        System.out.printf("\n");
+        System.out.printf("Compra tu SOAT y obten estos beneficios: \n");
+        System.out.printf("--Atención las 24 horas--\n");
+        System.out.printf("Ante cualquier accidente de tránsito\n");
+        System.out.printf("--Planchado y pintura--\n");
+        System.out.printf("20 de descuento\n");
+        System.out.printf("--20 de descuento--\n");
+        System.out.printf("En llantas y aros.\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
+
+    public String freclamaciones() {
+        System.out.printf("\n");
+        System.out.println("Bienvenido al libro de reclamaciones de BCP\n");
+        while (true) {
+            System.out.println("Eliga una de las opciones:\n");
+            System.out.println("1: Escriba su reclamo \n");
+            System.out.println("2: Mostrar reclamo\n");
+            System.out.println("3: Guardar\n");
+            System.out.println("4: Ir al menu principal\n");
+            System.out.printf("5: Ir al menu de chatbot\n");
+            System.out.print("Eliga una opción: \n");
+
+            int opcion = resident.nextInt();
+            resident.nextLine();
+
+            if (opcion == 1) {
+                System.out.print("Redacte su reclamo: \n");
+                String line = resident.nextLine();
+                if (contadorlineas < lineas.length) {
+                    lineas[contadorlineas] = line;
+                    contadorlineas++;
+                } else {
+                    System.out.println("Se ha alcanzado el límite.\n");
+                }
+            } else if (opcion == 2) {
+                System.out.println("Contenido:\n");
+                for (int i = 0; i < contadorlineas; i++) {
+                    System.out.println(lineas[i]);
+                }
+            } else if (opcion == 3) {
+                this.freclamaciones();
+            } else if (opcion == 4) {
+
+            } else if (opcion == 5) {
+                this.fMenuChat_Bot();
+                break;
+            } else {
+                System.out.println("Opción no válida. Inténtalo de nuevo.\n");
+            }
+        }
+        ExportarBloc();
+        return null;
+    }
+
+    public String ExportarBloc() {
+        try (FileWriter writer = new FileWriter("Bloc_de_notas.txt\n")) {
+            for (int i = 0; i < contadorlineas; i++) {
+                writer.write(lineas[i] + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("El contenido se ha guardado en 'bloc_de_notas.txt'.\n");
+        this.fMenuChat_Bot();
+        return null;
+    }
+
+    public static void main(String[] args) {
+        hoy chiqui = new hoy();
+        chiqui.frodo();
+    }
+}
